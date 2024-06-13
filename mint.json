@@ -27,8 +27,8 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Rhea",
+      "url": "rhea"
     }
   ],
   "anchors": [
@@ -40,7 +40,7 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Astrape",
       "pages": [
         "astrape",
         "configuration",
