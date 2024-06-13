@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "paul@vorticity.xyz"
     }
   ],
   "topbarCtaButton": {
@@ -33,7 +33,7 @@
   ],
   "anchors": [
     {
-      "name": "Vorticity",
+      "name": "Vorticity Website",
       "icon": "book-open-cover",
       "url": "https://vorticity.xyz/"
     }
@@ -42,9 +42,9 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "astrape",
+        "configuration",
+        "details"
       ]
     },
     {
@@ -74,8 +74,7 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "github": "https://github.com/VORTICITY-INC",
+    "linkedin": "https://www.linkedin.com/company/vorticityinc/"
   }
 }
