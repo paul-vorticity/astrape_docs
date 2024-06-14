@@ -43,7 +43,6 @@
       "group": "Astrape",
       "pages": [
         "astrape",
-        "details"
       ]
     },
     {
@@ -59,7 +58,7 @@
       "pages": [
         "fundamentals/data_misfits",
         "fundamentals/navigation",
-        "fundamentals/reusable-snippets"
+        "fundamentals/settings"
       ]
     },
     {
