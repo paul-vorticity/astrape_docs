@@ -3,20 +3,31 @@ title: 'Survey Configuration'
 description: 'How to setup your survey configuration file'
 ---
 
-This document describes the format and content for configuring your survey data.
+Here's a breakdown of the two approaches for defining upon which area of the survey you would like to run the inversion:
+
+- Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
+- Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
 
 <Warning>
 When defining your survey, you can choose to specify either the individual survey lines you want to run or the area you want to invert. However, you can only provide one of these options, not both.
 </Warning>
 
-Here's a breakdown of the two approaches:
-
-- Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
-- Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
-
 <Tabs>
   <Tab title="Survey Area">
-    ☝️ Welcome to the content that you can only see inside the first Tab.
+    
+  <AccordionGroup>
+   <Accordion icon="github" title="Southwest Corner (south_west)">
+     The southwest corner coordinates define the bottom-left corner of the survey area. It should be provided as a list containing two integers representing the X and Y coordinates, respectively.
+   </Accordion>
+   <Accordion icon="rectangle-terminal" title="Northeast Corner (north_east)">
+     The northeast corner coordinates define the top-right corner of the survey area. It should be provided as a list containing two integers representing the X and Y coordinates, respectively.
+
+     **Validation:** The southwest corner coordinates (X and Y) must be less than the northeast corner coordinates (X and Y) to ensure a valid survey area.
+   </Accordion>
+ </AccordionGroup>
+
+
+
   </Tab>
   <Tab title="Individual Lines">
     For defining individual survey lines, you'll need a dictionary within the configuration file. The keys in the dictionary represent unique identifiers for each line (e.g., "L1", "L2"), and the values are lists containing the starting and ending distance along the line.
@@ -24,8 +35,12 @@ Here's a breakdown of the two approaches:
     Example: 
     ```
     lines:
-      "L1": [100,400]
-      "L2": [300,700]
+      L1: 
+        - 100
+        - 400
+      L2:
+        - 300
+        - 700
     ```
     "L1" is defined and the inversion will be performed on this line from 100m to 400m along the line.
     "L2" is defined and the inversion will be performed on this line from 330m to 700m along the line.
