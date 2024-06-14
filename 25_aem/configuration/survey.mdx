@@ -5,14 +5,15 @@ description: 'How to setup your survey configuration file'
 
 This document describes the format and content for configuring your survey data.
 
+<Info>
 When defining your survey, you can choose to specify either the individual survey lines you want to run or the area you want to invert. However, you can only provide one of these options, not both.
+</Info>
 
 Choosing Between Individual Lines or Survey Area
 
 Here's a breakdown of the two approaches:
 
 Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
-
 Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
 
 <Tabs>
@@ -21,16 +22,12 @@ For defining individual survey lines, you'll need a dictionary within the config
 
 **Example:**
 
-```yaml
 lines:
   "Line 1": [[100, 200], [300, 400]]
   "Line 2": [[500, 600], [700, 800]]
-```
 
-**Explanation:**
-
-* "Line 1" is defined with starting coordinates (100, 200) and ending coordinates (300, 400).
-* "Line 2" is defined with starting coordinates (500, 600) and ending coordinates (700, 800).
+"Line 1" is defined with starting coordinates (100, 200) and ending coordinates (300, 400).
+"Line 2" is defined with starting coordinates (500, 600) and ending coordinates (700, 800).
     
 
   </Tab>
@@ -50,11 +47,10 @@ For defining the survey area, you'll need to specify the southwest and northeast
 
 **Example:**
 
-```yaml
+yaml
 area:
   south_west: [100, 200]
   north_east: [700, 800]
-```
 
 **Explanation:**
 
