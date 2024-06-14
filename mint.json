@@ -49,12 +49,17 @@
     {
       "group": "Essentials",
       "pages": [
-        "essentials/markdown",
         "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "essentials/hardware",
+        "essentials/benchmarks"
+      ]
+    },
+    {
+      "group": "Inversion Fundamentals",
+      "pages": [
+        "fundamentals/data_misfits",
+        "fundamentals/navigation",
+        "fundamentals/reusable-snippets"
       ]
     },
     {
