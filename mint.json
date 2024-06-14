@@ -70,6 +70,14 @@
         "25_aem/configuration/survey",
         "25_aem/configuration/inversion"
       ]
+    },
+    {
+      "group": "Inversion Outputs",
+      "pages": [
+        "25_aem/outputs/data",
+        "25_aem/outputs/report",
+        "25_aem/outputs/visualization"
+      ]
     }
   ],
   "footerSocials": {
