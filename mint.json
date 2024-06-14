@@ -43,7 +43,6 @@
       "group": "Astrape",
       "pages": [
         "astrape",
-        "configuration",
         "details"
       ]
     },
@@ -65,11 +64,11 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Configuration Files",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "25_aem/configuration/system",
+        "25_aem/configuration/survey",
+        "25_aem/configuration/inversion"
       ]
     }
   ],
