@@ -61,9 +61,10 @@
       ]
     },
     {
-      "group": "2.5D Introduction",
+      "group": "2.5D Airborne Electromagentic Inversions",
       "pages": [
-        "25_aem/introduction"
+        "25_aem/introduction",        
+        "25_aem/step"
       ]
     },
     {

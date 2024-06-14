@@ -15,3 +15,45 @@ Here's a breakdown of the two approaches:
 
 Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
 Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
+
+<Tabs>
+  <Tab title="Individual Lines">
+For defining individual survey lines, you'll need a dictionary within the configuration file. The keys in the dictionary represent unique identifiers for each line (e.g., "Line 1", "Line 2"), and the values are lists containing the starting and ending points of the line as coordinates.
+
+**Example:**
+
+lines:
+  "Line 1": [[100, 200], [300, 400]]
+  "Line 2": [[500, 600], [700, 800]]
+
+"Line 1" is defined with starting coordinates (100, 200) and ending coordinates (300, 400).
+"Line 2" is defined with starting coordinates (500, 600) and ending coordinates (700, 800).
+    
+
+  </Tab>
+  <Tab title="Survey Area">
+For defining the survey area, you'll need to specify the southwest and northeast corner coordinates within the configuration file.
+
+<AccordionGroup>
+  <Accordion icon="github" title="Southwest Corner (south_west)">
+    The southwest corner coordinates define the bottom-left corner of the survey area. It should be provided as a list containing two integers representing the X and Y coordinates, respectively.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Northeast Corner (north_east)">
+    The northeast corner coordinates define the top-right corner of the survey area. It should be provided as a list containing two integers representing the X and Y coordinates, respectively.
+
+    **Validation:** The southwest corner coordinates (X and Y) must be less than the northeast corner coordinates (X and Y) to ensure a valid survey area.
+  </Accordion>
+</AccordionGroup>
+
+**Example:**
+
+yaml
+area:
+  south_west: [100, 200]
+  north_east: [700, 800]
+
+**Explanation:**
+
+* The survey area is defined with a southwest corner at (100, 200) and a northeast corner at (700, 800).
+  </Tab>
+</Tabs>
