@@ -5,13 +5,29 @@ description: 'How to setup your survey configuration file'
 
 This document describes the format and content for configuring your survey data.
 
-<Info>
+<Warning>
 When defining your survey, you can choose to specify either the individual survey lines you want to run or the area you want to invert. However, you can only provide one of these options, not both.
-</Info>
-
-Choosing Between Individual Lines or Survey Area
+</Warning>
 
 Here's a breakdown of the two approaches:
 
-Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
-Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
+- Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
+- Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
+
+<Tabs>
+  <Tab title="Survey Area">
+    ☝️ Welcome to the content that you can only see inside the first Tab.
+  </Tab>
+  <Tab title="Individual Lines">
+    For defining individual survey lines, you'll need a dictionary within the configuration file. The keys in the dictionary represent unique identifiers for each line (e.g., "L1", "L2"), and the values are lists containing the starting and ending distance along the line.
+
+    Example: 
+    ```
+    lines:
+      "L1": [100,400]
+      "L2": [300,700]
+    ```
+    "L1" is defined and the inversion will be performed on this line from 100m to 400m along the line.
+    "L2" is defined and the inversion will be performed on this line from 330m to 700m along the line.
+  </Tab>
+</Tabs>
