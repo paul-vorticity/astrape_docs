@@ -3,96 +3,61 @@ title: 'Survey Configuration'
 description: 'How to setup your survey configuration file'
 ---
 
-<Info>
-  **Prerequisite** You should have installed Node.js (version 18.10.0 or
-  higher).
-</Info>
+This document describes the format and content for configuring your survey data.
 
-Step 1. Install Mintlify on your OS:
+When defining your survey, you can choose to specify either the individual survey lines you want to run or the area you want to invert. However, you can only provide one of these options, not both.
 
-<CodeGroup>
+Choosing Between Individual Lines or Survey Area
 
-```bash npm
-npm i -g mintlify
+Here's a breakdown of the two approaches:
+
+Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
+
+Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
+
+<Tabs>
+  <Tab title="Individual Lines">
+For defining individual survey lines, you'll need a dictionary within the configuration file. The keys in the dictionary represent unique identifiers for each line (e.g., "Line 1", "Line 2"), and the values are lists containing the starting and ending points of the line as coordinates.
+
+**Example:**
+
+```yaml
+lines:
+  "Line 1": [[100, 200], [300, 400]]
+  "Line 2": [[500, 600], [700, 800]]
 ```
 
-```bash yarn
-yarn global add mintlify
-```
+**Explanation:**
 
-</CodeGroup>
+* "Line 1" is defined with starting coordinates (100, 200) and ending coordinates (300, 400).
+* "Line 2" is defined with starting coordinates (500, 600) and ending coordinates (700, 800).
+    
 
-Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
-
-```bash
-mintlify dev
-```
-
-The documentation website is now available at `http://localhost:3000`.
-
-### Custom Ports
-
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
-
-```bash
-mintlify dev --port 3333
-```
-
-You will see an error like this if you try to run Mintlify in a port that's already taken:
-
-```md
-Error: listen EADDRINUSE: address already in use :::3000
-```
-
-## Mintlify Versions
-
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
-
-<CodeGroup>
-
-```bash npm
-npm i -g mintlify@latest
-```
-
-```bash yarn
-yarn global upgrade mintlify
-```
-
-</CodeGroup>
-
-## Deployment
-
-<Tip>
-  Unlimited editors available under the [Startup
-  Plan](https://mintlify.com/pricing)
-</Tip>
-
-You should see the following if the deploy successfully went through:
-
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Troubleshooting
-
-Here's how to solve some common problems when working with the CLI.
+  </Tab>
+  <Tab title="Survey Area">
+For defining the survey area, you'll need to specify the southwest and northeast corner coordinates within the configuration file.
 
 <AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
+  <Accordion icon="github" title="Southwest Corner (south_west)">
+    The southwest corner coordinates define the bottom-left corner of the survey area. It should be provided as a list containing two integers representing the X and Y coordinates, respectively.
   </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
+  <Accordion icon="rectangle-terminal" title="Northeast Corner (north_east)">
+    The northeast corner coordinates define the top-right corner of the survey area. It should be provided as a list containing two integers representing the X and Y coordinates, respectively.
 
-Repeat step 3.
-
-  </Accordion>
-  <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
+    **Validation:** The southwest corner coordinates (X and Y) must be less than the northeast corner coordinates (X and Y) to ensure a valid survey area.
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+**Example:**
+
+```yaml
+area:
+  south_west: [100, 200]
+  north_east: [700, 800]
+```
+
+**Explanation:**
+
+* The survey area is defined with a southwest corner at (100, 200) and a northeast corner at (700, 800).
+  </Tab>
+</Tabs>
