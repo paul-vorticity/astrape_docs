@@ -25,20 +25,13 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Vorticity Website",
+    "url": "https://vorticity.xyz/"
   },
   "tabs": [
     {
       "name": "2.5D AEM",
       "url": "25_aem"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Vorticity Website",
-      "icon": "book-open-cover",
-      "url": "https://vorticity.xyz/"
     }
   ],
   "navigation": [
