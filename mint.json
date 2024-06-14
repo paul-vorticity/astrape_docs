@@ -16,7 +16,7 @@
     }
   },
   "primaryTab": {
-    "name": "Astrape Overview"
+    "name": "Overview"
   },
   "topbarLinks": [
     {
@@ -40,7 +40,7 @@
   ],
   "navigation": [
     {
-      "group": "Astrape",
+      "group": "Getting Started",
       "pages": [
         "astrape"
       ]
