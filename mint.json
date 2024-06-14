@@ -42,7 +42,9 @@
     {
       "group": "Getting Started",
       "pages": [
-        "astrape"
+        "started/introduction", 
+        "started/science", 
+        "started/fast"
       ]
     },
     {
