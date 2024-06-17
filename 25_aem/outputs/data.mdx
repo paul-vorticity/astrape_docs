@@ -5,22 +5,26 @@ description: 'Inversion output data files'
 
 The data output from the inversion process includes several files containing the processed data and results. The key files generated are:
 
-- **astrape_inversion_data.csv**: Contains the x, y, z coordinates, line names, and conductivity values for each point in the survey.
-  - Columns:
-    - `x`: x coordinate in meters.
-    - `y`: y coordinate in meters.
-    - `z`: z coordinate in meters.
-    - `Line`: Line name.
-    - `Conductivity`: Conductivity value in S/m.
-
-- **astrape_inversion_extended_data.csv**: Extends the data with additional columns for different measurements.
-  - Columns:
-    - `x`, `y`, `z`, `Line`, `Conductivity` (same as above).
-    - `Conductivity_mSm`: Conductivity in mS/m.
-    - `Log10_Conductivity_mSm`: Log base 10 of conductivity in mS/m.
-    - `Resistivity_ohm_m`: Resistivity in ohm meters.
-    - `Log10_Resistivity_ohm_m`: Log base 10 of resistivity in ohm meters.
-
-- **astrape_inversion_extended_data.xyz**: Contains the same data as `astrape_inversion_extended_data.csv` but in XYZ format.
-
-The data files are saved in the `deliverables` directory within the survey region folder.
+<Tabs>
+  <Tab title="astrape_inversion_data.csv">
+    Contains the x, y, z coordinates, line names, and conductivity values for each point in the survey.
+    - Columns:
+      - `x`: x coordinate in meters.
+      - `y`: y coordinate in meters.
+      - `z`: z coordinate in meters.
+      - `Line`: Line name.
+      - `Conductivity`: Conductivity value in S/m.
+  </Tab>
+  <Tab title="astrape_inversion_extended_data.csv">
+    Extends the data with additional columns for different measurements.
+    - Columns:
+      - `x`, `y`, `z`, `Line`, `Conductivity` (same as above).
+      - `Conductivity_mSm`: Conductivity in mS/m.
+      - `Log10_Conductivity_mSm`: Log base 10 of conductivity in mS/m.
+      - `Resistivity_ohm_m`: Resistivity in ohm meters.
+      - `Log10_Resistivity_ohm_m`: Log base 10 of resistivity in ohm meters.
+  </Tab>
+  <Tab title="astrape_inversion_extended_data.xyz">
+    Contains the same data as `astrape_inversion_extended_data.csv` but in XYZ format.
+  </Tab>
+</Tabs>
