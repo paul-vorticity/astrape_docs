@@ -73,6 +73,13 @@
       ]
     },
     {
+      "group": "Case Studies",
+      "pages": [
+        "25_aem/case_studies/1d_2d",
+        "25_aem/case_studies/parameters"
+      ]
+    },
+    {
       "group": "Coming Soon",
       "pages": [
         "coming_soon/3d_aem",        

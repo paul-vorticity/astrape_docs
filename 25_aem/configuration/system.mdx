@@ -104,3 +104,52 @@ The filename (including extension) of the file within the data folder that conta
 The scale factor applied to the time values provided in the offtime_sampling file. Data Type: Positive Float (e.g., 1.0e-3 represents milliseconds).
 </Accordion>
 </AccordionGroup>
+
+Please see the following example configuration file: 
+
+<Accordion title="Example System Configuration File:">
+  ```yaml System Configuration Example
+  deliverables: 
+  logo_file: "logo.png"
+  area_name: "Batchawana Property"
+  project_id: "Project_9012"
+
+transmitter:
+  tx_radius_m: 13
+  tx_turns: 4
+  off_time_s: 7.2e-3
+  peak_time_s: 5.46e-3
+  tx_area_m: 2123.7
+  ramp_on_rate: 3.0
+
+data: 
+  col_names: 
+    xcol: "x"
+    ycol: "y"
+    zcol: "radarb"
+    sfz: "sFz"
+    topo_column: "DEM"
+    line_column: "Lines"
+  data_eps: 2.0e-13
+  data_std: 0.1
+
+waveform: 
+  filepath: ""
+  type: "VTEM"
+  discretization: 
+  - [0.364e-3, 15]
+  - [0.116e-3, 15]
+  - [5.0e-6, 13]
+  - [1.53619e-5, 13] 
+  - [5.272724e-5, 13]
+  - [1.8097755e-4, 13]
+  - [6.2117556e-4, 13]
+
+receiver: 
+  data_tc_end: 33
+  data_tc_start: 10
+  sampling_filepath: "sterling_offtime_sampling.csv"
+  file_start_index: 0
+  time_scale_s: 1.0e-3
+  ```
+</Accordion>
