@@ -105,7 +105,7 @@ The scale factor applied to the time values provided in the offtime_sampling fil
 </Accordion>
 </AccordionGroup>
 
-Please see the following example inversion configuration file: 
+The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
 
 <Accordion title="Example System Configuration File:">
   ```yaml system_config.yaml
@@ -114,42 +114,42 @@ Please see the following example inversion configuration file:
     area_name: "Example Property"
     project_id: "Project_1234"
 
-transmitter:
-  tx_radius_m: 13
-  tx_turns: 4
-  off_time_s: 7.2e-3
-  peak_time_s: 5.46e-3
-  tx_area_m: 2123.7
-  ramp_on_rate: 3.0
+  transmitter:
+    tx_radius_m: 13
+    tx_turns: 4
+    off_time_s: 7.2e-3
+    peak_time_s: 5.46e-3
+    tx_area_m: 2123.7
+    ramp_on_rate: 3.0
 
-data: 
-  col_names: 
-    xcol: "x"
-    ycol: "y"
-    zcol: "radarb"
-    sfz: "sFz"
-    topo_column: "DEM"
-    line_column: "Lines"
-  data_eps: 2.0e-13
-  data_std: 0.1
+  data: 
+    col_names: 
+      xcol: "x"
+      ycol: "y"
+      zcol: "radarb"
+      sfz: "sFz"
+      topo_column: "DEM"
+      line_column: "Lines"
+    data_eps: 2.0e-13
+    data_std: 0.1
 
-waveform: 
-  filepath: ""
-  type: "VTEM"
-  discretization: 
-  - [0.364e-3, 15]
-  - [0.116e-3, 15]
-  - [5.0e-6, 13]
-  - [1.53619e-5, 13] 
-  - [5.272724e-5, 13]
-  - [1.8097755e-4, 13]
-  - [6.2117556e-4, 13]
+  waveform: 
+    filepath: ""
+    type: "VTEM"
+    discretization: 
+    - [0.364e-3, 15]
+    - [0.116e-3, 15]
+    - [5.0e-6, 13]
+    - [1.53619e-5, 13] 
+    - [5.272724e-5, 13]
+    - [1.8097755e-4, 13]
+    - [6.2117556e-4, 13]
 
-receiver: 
-  data_tc_end: 33
-  data_tc_start: 10
-  sampling_filepath: "offtime_sampling.csv"
-  file_start_index: 0
-  time_scale_s: 1.0e-3
+  receiver: 
+    data_tc_end: 33
+    data_tc_start: 10
+    sampling_filepath: "offtime_sampling.csv"
+    file_start_index: 0
+    time_scale_s: 1.0e-3
   ```
 </Accordion>
