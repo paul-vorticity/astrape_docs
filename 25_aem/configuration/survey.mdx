@@ -23,9 +23,18 @@ When defining your survey, you can choose to specify either the individual surve
 
      **Validation:** The southwest corner coordinates (X and Y) must be less than the northeast corner coordinates (X and Y) to ensure a valid survey area.
    </Accordion>
+
  </AccordionGroup>
-
-
+    Example: 
+    ```
+    area: 
+      south_west: 
+        - 708000
+        - 5514500
+      north_east:
+        - 708500
+        - 5515000
+    ```
 
   </Tab>
   <Tab title="Individual Lines">
