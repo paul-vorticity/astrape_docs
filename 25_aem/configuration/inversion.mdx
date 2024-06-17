@@ -142,3 +142,66 @@ The inversion configuration file specifies the parameters and algorithms used to
   The air conductivity value. Data Type: Positive Float.
   </Accordion>
 </AccordionGroup>
+
+
+The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
+
+<Accordion title="Example Inversion Configuration File:">
+  ```yaml inversion_config.yaml
+  experiment: 
+    name: "example_run"
+    shengbar_range: [-500,350]
+    schedule_strategy: "fixed"
+    num_gpu: 2
+    source_dx: 10
+    use_topo: True
+    inversion_tc_start: 10
+    inversion_tc_end: 33
+
+  mesh: 
+    cell_sizes: [20,20,20]
+    min_mesh_domain_x: [-1000, 1000]
+    min_mesh_domain_y: [-500, 500]
+    min_mesh_domain_z: [-1000, 1000]
+    padding: 2
+    core_domain_x: [-100, 100]  
+    core_domain_y: [-50, 50]
+    core_domain_z: [-400, 60] 
+
+  inversion_constants:
+    noise_threshold: 1.0e-12
+    optimizer: "PGNCG"
+    optimizer_constants:
+      maxIter: 25
+      LSshorten: 0.5
+      maxIterLS: 20
+    BetaSchedule:
+      coolingFactor: 1
+      coolingRate: 3
+    beta: 2.0
+    alphas: 
+      alpha_s: 0.025
+      alpha_x: 1.0
+      alpha_y: 1.0
+    weighting_flag: False
+    weighting_constants:
+      type: "penetration_limit"
+      alpha: 2.0
+      penetration_limit_start: 600
+      penetration_limit_end: 650
+      limit_weight_max: 5
+    upper_bound_flag: False
+    upper_bound_value: 3 
+    reg_sparse: False
+
+  init_model: 
+    load_init_model: False
+    init_model_path: ""
+    init_directory_path: ""
+    init_model_scale: "log"
+
+  sigmas:
+    sigma_background: 1.0e-3
+    sigma_air: 1.0e-8
+  ```
+</Accordion>
