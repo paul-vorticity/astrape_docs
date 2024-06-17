@@ -1,98 +1,146 @@
 ---
-title: '2.5D Inversion Configuration'
+
+title: 'Inversion Configuration'
 description: 'How to setup your inversion configuration file'
+
 ---
 
-<Info>
-  **Prerequisite** You should have installed Node.js (version 18.10.0 or
-  higher).
-</Info>
-
-Step 1. Install Mintlify on your OS:
-
-<CodeGroup>
-
-```bash npm
-npm i -g mintlify
-```
-
-```bash yarn
-yarn global add mintlify
-```
-
-</CodeGroup>
-
-Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
-
-```bash
-mintlify dev
-```
-
-The documentation website is now available at `http://localhost:3000`.
-
-### Custom Ports
-
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
-
-```bash
-mintlify dev --port 3333
-```
-
-You will see an error like this if you try to run Mintlify in a port that's already taken:
-
-```md
-Error: listen EADDRINUSE: address already in use :::3000
-```
-
-## Mintlify Versions
-
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
-
-<CodeGroup>
-
-```bash npm
-npm i -g mintlify@latest
-```
-
-```bash yarn
-yarn global upgrade mintlify
-```
-
-</CodeGroup>
-
-## Deployment
-
-<Tip>
-  Unlimited editors available under the [Startup
-  Plan](https://mintlify.com/pricing)
-</Tip>
-
-You should see the following if the deploy successfully went through:
-
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Troubleshooting
-
-Here's how to solve some common problems when working with the CLI.
+### Experiment
 
 <AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
+  <Accordion icon="rectangle-terminal" title="Use GPU (use_gpu)">
+  Whether to use GPU for the inversion process. Data Type: Boolean.
   </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
-
-Repeat step 3.
-
+  <Accordion icon="rectangle-terminal" title="Experiment Name (name)">
+  The name of the experiment. Data Type: String.
   </Accordion>
-  <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
+  <Accordion icon="rectangle-terminal" title="Shengbar Range (shengbar_range)">
+  The range for Shengbar in the form of a list with two integers. Data Type: List of two integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Schedule Strategy (schedule_strategy)">
+  The scheduling strategy for the inversion. Valid options are: "minimum", "fixed", "maximum_available", "maximum". Data Type: String.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Number of GPUs (num_gpu)">
+  The number of GPUs to be used. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Source Dx (source_dx)">
+  The source Dx value in meters. Data Type: Positive Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Use Topography (use_topo)">
+  Whether to use topography data. Data Type: Boolean.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Inversion Time Channel Start (inversion_tc_start)">
+  The index of the first time channel for the inversion data. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Inversion Time Channel End (inversion_tc_end)">
+  The index of the last time channel for the inversion data. Data Type: Positive Integer.
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+### Mesh
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Cell Sizes (cell_sizes)">
+  The sizes of the mesh cells in meters. Data Type: List of three positive integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain X (min_mesh_domain_x)">
+  The minimum domain of the mesh in the X direction as a list of two integers. Data Type: List of two integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain Y (min_mesh_domain_y)">
+  The minimum domain of the mesh in the Y direction as a list of two integers. Data Type: List of two integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain Z (min_mesh_domain_z)">
+  The minimum domain of the mesh in the Z direction as a list of two integers. Data Type: List of two integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Padding (padding)">
+  The padding value for the mesh. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Core Domain X (core_domain_x)">
+  The core domain of the mesh in the X direction as a list of two integers. Data Type: List of two integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Core Domain Y (core_domain_y)">
+  The core domain of the mesh in the Y direction as a list of two integers. Data Type: List of two integers.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Core Domain Z (core_domain_z)">
+  The core domain of the mesh in the Z direction as a list of two integers. Data Type: List of two integers.
+  </Accordion>
+</AccordionGroup>
+
+### Inversion Constants
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Noise Threshold (noise_threshold)">
+  The noise threshold value for the inversion process. Data Type: Positive Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Optimizer (optimizer)">
+  The optimizer to be used for the inversion. Valid options are: "PGNCG", "IGN". Data Type: String.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Optimizer Constants (optimizer_constants)">
+  Constants for the optimizer, including:
+  * maxIter: Maximum number of iterations. Data Type: Positive Integer.
+  * LSshorten: Line search shortening factor. Data Type: Positive Float.
+  * maxIterLS: Maximum number of line search iterations. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Beta Schedule (BetaSchedule)">
+  Settings for the beta schedule, including:
+  * coolingFactor: Cooling factor for the beta schedule. Data Type: Non-negative Float.
+  * coolingRate: Cooling rate for the beta schedule. Data Type: Non-negative Integer.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Beta (beta)">
+  The beta value for the inversion process. Data Type: Positive Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Alphas (alphas)">
+  Alpha values for the inversion, including:
+  * alpha_s: Alpha value for smoothness. Data Type: Positive Float or specific string.
+  * alpha_x: Alpha value for x-direction. Data Type: Non-negative Float.
+  * alpha_y: Alpha value for y-direction. Data Type: Non-negative Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Weighting Flag (weighting_flag)">
+  Whether to apply weighting in the inversion. Data Type: Boolean.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Weighting Constants (weighting_constants)">
+  Constants for the weighting, including:
+  * type: Type of weighting. Data Type: String.
+  * alpha: Alpha value for weighting. Data Type: Non-negative Float.
+  * penetration_limit_start: Start value for penetration limit. Data Type: Non-negative Float.
+  * penetration_limit_end: End value for penetration limit. Data Type: Non-negative Float.
+  * limit_weight_max: Maximum weight limit. Data Type: Non-negative Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Upper Bound Flag (upper_bound_flag)">
+  Whether to apply an upper bound in the inversion. Data Type: Boolean.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Upper Bound Value (upper_bound_value)">
+  The upper bound value for the inversion. Data Type: Positive Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Regularization Sparse (reg_sparse)">
+  Whether to apply sparse regularization. Data Type: Boolean.
+  </Accordion>
+</AccordionGroup>
+
+### Initial Model
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Load Initial Model (load_init_model)">
+  Whether to load an initial model. Data Type: Boolean.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Initial Model Path (init_model_path)">
+  The path to the initial model file. Data Type: String.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Initial Directory Path (init_directory_path)">
+  The path to the directory containing initial model files. Data Type: String.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Initial Model Scale (init_model_scale)">
+  The scale of the initial model. Valid options are: "linear", "log". Data Type: String.
+  </Accordion>
+</AccordionGroup>
+
+### Sigmas
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Sigma Background (sigma_background)">
+  The background conductivity value. Data Type: Positive Float.
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Sigma Air (sigma_air)">
+  The air conductivity value. Data Type: Positive Float.
+  </Accordion>
+</AccordionGroup>
