@@ -1,33 +1,17 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+
+title: Introduction to 2.5D Inversion
+description: 'Understanding the principles and applications of 2.5D inversion in geophysics'
+
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+### What is a 2.5D AEM Inversion?
 
-## Welcome
+2.5D inversion of Airborn Electromagnetic data is a geophysical data processing technique that combines the simplicity of 2D inversion with some aspects of 3D inversion.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+### How Does 2.5D Inversion Work?
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+In 2.5D inversion, the subsurface is assumed to vary smoothly in the direction perpendicular to the survey lines while maintaining full variation along the survey lines. The method involves solving the inversion problem along each line to predict the geophysical response of a given subsurface model and then adjusting the model to minimize the difference between the predicted and observed data. This iterative process continues until the model converges to a solution that best fits the observed data.
 
-## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+Sure, here's a markdown file that describes the overall folder structure and a suggested name for the super folder:
