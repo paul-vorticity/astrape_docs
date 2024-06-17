@@ -9,7 +9,7 @@ The `data` subfolder is crucial for organizing all the input files necessary for
 
 <CardGroup cols={1}>
   <Card title="Data File" icon="square-1">
-    The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes. The column names of the relevant data should be provided in the system_config file. 
+    The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes. The column names of the relevant data should be provided in the system_config.yaml. 
     <ul>
       <li>Required File Name: `data.csv`</li>
       <li>Columns: `x`, `y`, `z`, `sFz[1]`, etc.</li>
@@ -17,7 +17,7 @@ The `data` subfolder is crucial for organizing all the input files necessary for
   </Card>
   <Card title="Offtime Sampling File" icon="square-2">
     A CSV file containing the receiver sampling times. This is used to define the sampling intervals during the off-time of the waveform.
-    The 'middle' column indicates the middle of the sampling interval. The file name is passed as a parameter in the system_config file. 
+    The 'middle' column indicates the middle of the sampling interval. The file name is passed as a parameter in the system_config.yaml. 
     <ul>
       <li>Example File Name: `offtime_sampling.csv`</li>
       <li>Required Columns: `index`, `middle` </li>
@@ -49,7 +49,7 @@ The `data` subfolder is crucial for organizing all the input files necessary for
     </ul>
   </Card>
   <Card title="Logo Image (optional)" icon="square-7">
-    An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder if you wish to include a custom logo in the deliverables.
+    An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder and the correct path should be passed in the system_config.yaml if you would like the logo to appear on the reports. 
     <ul>
       <li>Example File Name: `company_logo.png`</li>
     </ul>
