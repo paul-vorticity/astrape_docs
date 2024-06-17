@@ -8,32 +8,29 @@ description: 'How to setup your inversion configuration file'
 ### Experiment
 
 <AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Use GPU (use_gpu)">
-  Whether to use GPU for the inversion process. Data Type: Boolean.
-  </Accordion>
   <Accordion icon="rectangle-terminal" title="Experiment Name (name)">
-  The name of the experiment. Data Type: String.
+  The name of the experiment. This will be used in the name of the inversion folder. Data Type: String.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Shengbar Range (shengbar_range)">
-  The range for Shengbar in the form of a list with two integers. Data Type: List of two integers.
+  The z range for Shengbar plots in the form of a list with two integers. This will determine the range that will be plotted as the model updates each iteration. Data Type: List of two integers.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Schedule Strategy (schedule_strategy)">
   The scheduling strategy for the inversion. Valid options are: "minimum", "fixed", "maximum_available", "maximum". Data Type: String.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Number of GPUs (num_gpu)">
-  The number of GPUs to be used. Data Type: Positive Integer.
+  This is only applicable if the schedule strategy chosen is 'fixed'. The number of GPUs to be used on each line. Data Type: Positive Integer.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Source Dx (source_dx)">
-  The source Dx value in meters. Data Type: Positive Float.
+  The source dx value in meters. This is the distance between source-receiver pairs that will be sampled and used from the data. Data Type: Positive Float.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Use Topography (use_topo)">
-  Whether to use topography data. Data Type: Boolean.
+  Whether to use the topography in the inversion. If this is False the earth will be approximated to have a flat surface at z=0. Data Type: Boolean.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Inversion Time Channel Start (inversion_tc_start)">
-  The index of the first time channel for the inversion data. Data Type: Positive Integer.
+  The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Inversion Time Channel End (inversion_tc_end)">
-  The index of the last time channel for the inversion data. Data Type: Positive Integer.
+  The index of the last time channel to be used in the inversion. Data Type: Positive Integer.
   </Accordion>
 </AccordionGroup>
 
@@ -41,7 +38,7 @@ description: 'How to setup your inversion configuration file'
 
 <AccordionGroup>
   <Accordion icon="rectangle-terminal" title="Cell Sizes (cell_sizes)">
-  The sizes of the mesh cells in meters. Data Type: List of three positive integers.
+  The sizes of the mesh cells in the core domain region in meters. Data Type: List of three positive integers.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain X (min_mesh_domain_x)">
   The minimum domain of the mesh in the X direction as a list of two integers. Data Type: List of two integers.
@@ -70,10 +67,10 @@ description: 'How to setup your inversion configuration file'
 
 <AccordionGroup>
   <Accordion icon="rectangle-terminal" title="Noise Threshold (noise_threshold)">
-  The noise threshold value for the inversion process. Data Type: Positive Float.
+  The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Optimizer (optimizer)">
-  The optimizer to be used for the inversion. Valid options are: "PGNCG", "IGN". Data Type: String.
+  The optimizer to be used for the inversion. Valid options are: "PGNCG", "IGN". "PGNCG" is Projected Gauss-Newton Conjugate Gradient and "IGN" is Inexact Gauss-Newton. Data Type: String.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Optimizer Constants (optimizer_constants)">
   Constants for the optimizer, including:
@@ -96,7 +93,7 @@ description: 'How to setup your inversion configuration file'
   * alpha_y: Alpha value for y-direction. Data Type: Non-negative Float.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Weighting Flag (weighting_flag)">
-  Whether to apply weighting in the inversion. Data Type: Boolean.
+  Whether to apply any depth weighting in the inversion. Data Type: Boolean.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Weighting Constants (weighting_constants)">
   Constants for the weighting, including:
