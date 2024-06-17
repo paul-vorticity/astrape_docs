@@ -5,7 +5,7 @@ description: 'How to setup your system configuration file'
 ### Deliverables
 
 <AccordionGroup>
-  <Accordion icon="github" title="Logo File (logo_file)">
+  <Accordion icon="rectangle-terminal" title="Logo File (logo_file)">
   The filename (including extension) of the customer company logo image file within the data folder. This image will appear in the final reports. Data Type: Optional String.
 </Accordion>
 <Accordion icon="rectangle-terminal" title="Area Name (area_name)">
@@ -19,22 +19,22 @@ The ID of the project for which the inversion is performed. Data Type: Optional 
 ### Transmitter
 
 <AccordionGroup>
-<Accordion icon="github" title="Radius (tx_radius_m)">
+<Accordion icon="rectangle-terminal" title="Radius (tx_radius_m)">
 The radius of the transmitter loop in meters. This is used for the modelling of the signal. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="github" title="Turns (tx_turns)">
+<Accordion icon="rectangle-terminal" title="Turns (tx_turns)">
 The number of turns in the transmitter coil. This must be an integer and it is used for the modelling of the signal. Data Type: Positive Integer.
 </Accordion>
-<Accordion icon="github" title="Off-time (off_time_s)">
+<Accordion icon="rectangle-terminal" title="Off-time (off_time_s)">
 (Optional) The off-time of the transmitter waveform in seconds. Defaults to 0.0059. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="github" title="Peak Time (peak_time_s)">
+<Accordion icon="rectangle-terminal" title="Peak Time (peak_time_s)">
 (Optional) The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="github" title="Area (tx_area_m)">
+<Accordion icon="rectangle-terminal" title="Area (tx_area_m)">
 (Optional) The area of the transmitter loop in square meters. Defaults to `3848.0 * tx_radius_m2. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="github" title="Ramp-on Rate (ramp_on_rate)">
+<Accordion icon="rectangle-terminal" title="Ramp-on Rate (ramp_on_rate)">
 (Optional) The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
 </Accordion>
 </AccordionGroup>
@@ -42,28 +42,28 @@ The number of turns in the transmitter coil. This must be an integer and it is u
 ### Data
 
 <AccordionGroup>
-<Accordion icon="github" title="Easting Column (xcol)">
+<Accordion icon="rectangle-terminal" title="Easting Column (xcol)">
 The name of the column within the data file that provides the easting coordinates (in meters) of each sounding. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="Northing Column (ycol)">
+<Accordion icon="rectangle-terminal" title="Northing Column (ycol)">
 The name of the column within the data file that provides the northing coordinates (in meters) of each sounding. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="A-Column (zcol)">
+<Accordion icon="rectangle-terminal" title="A-Column (zcol)">
 The name of the column within the data file that provides the EM transmitter-receiver loop terrain clearance. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="Data Column (sfz)">
+<Accordion icon="rectangle-terminal" title="Data Column (sfz)">
 The prefix used within the data file to identify the column containing the derivative of the magnetic field in the z-direction. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="Line Column (line_col)">
+<Accordion icon="rectangle-terminal" title="Line Column (line_col)">
 (Optional) The name of the column within the data file that indicates the line of the sounding. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="Topography Column (topo_col)">
+<Accordion icon="rectangle-terminal" title="Topography Column (topo_col)">
 (Optional) The name of the column within the data file that provides the digital elevation model (DEM) of the sounding. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="Data Epsilon (data_eps)">
+<Accordion icon="rectangle-terminal" title="Data Epsilon (data_eps)">
 The data uncertainty used in the loss function. Refer to the loss function documentation for more details. Data Type: Positive Float (typically a small value).
 </Accordion>
-<Accordion icon="github" title="Standard Deviation (data_std)">
+<Accordion icon="rectangle-terminal" title="Standard Deviation (data_std)">
 The percentage data uncertainty used in the loss function. Refer to the loss function documentation for more details. Data Type: Positive Float between 0 and 1 (represents a percentage).
 </Accordion>
 </AccordionGroup>
@@ -71,15 +71,15 @@ The percentage data uncertainty used in the loss function. Refer to the loss fun
 ### Waveform 
 
 <AccordionGroup>
-<Accordion icon="github" title="Type (type)">
+<Accordion icon="rectangle-terminal" title="Type (type)">
 The type of waveform used. Valid options are:
 * "VTEM"
 * "XCite"
 </Accordion>
-<Accordion icon="github" title="Filepath (filepath)">
+<Accordion icon="rectangle-terminal" title="Filepath (filepath)">
 (Optional) The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
 </Accordion>
-<Accordion icon="github" title="Discretization (discretization)">
+<Accordion icon="rectangle-terminal" title="Discretization (discretization)">
 A list of lists defining the time sampling points and their corresponding number of repetitions. Each sub-list contains two elements:
 * The first element is the time value in seconds. Data Type: Float.
 * The second element is the number of repetitions for that time point. Data Type: Integer.
@@ -89,13 +89,13 @@ A list of lists defining the time sampling points and their corresponding number
 ### Receiver
 
 <AccordionGroup>
-<Accordion icon="github" title="Time Channel Start (data_tc_start)">
+<Accordion icon="rectangle-terminal" title="Time Channel Start (data_tc_start)">
 The index of the first time channel in the data file for which data is available. Data Type: Positive Integer.
 </Accordion>
-<Accordion icon="github" title="Time Channel End (data_tc_end)">
+<Accordion icon="rectangle-terminal" title="Time Channel End (data_tc_end)">
 The index of the last time channel in the data file for which data is available. Data Type: Positive Integer (must be greater than or equal to data_tc_start).
 </Accordion>
-<Accordion icon="github" title="Offtime Sampling Filepath (sampling_filepath)">
+<Accordion icon="rectangle-terminal" title="Offtime Sampling Filepath (sampling_filepath)">
 The filename (including extension) of the file within the data folder that contains the times of the offtime sampling. Data Type: String.
 </Accordion>
 <Accordion icon="rectangle-terminal" title="Offtime Sampling Time Scale (time_scale_s)">
