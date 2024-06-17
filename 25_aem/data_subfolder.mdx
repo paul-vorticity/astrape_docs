@@ -5,54 +5,54 @@ description: 'What needs to go in the data subfolder'
 
 ---
 
-### Overview
-
 The `data` subfolder is crucial for organizing all the input files necessary for the inversion process. Properly structuring this folder ensures smooth execution and accurate results from the 2.5D inversion code. Below are the essential components and their descriptions that should be included in the `data` subfolder.
 
 <CardGroup cols={1}>
   <Card title="Data File" icon="square-1">
-    The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes.
+    The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes. The column names of the relevant data should be provided in the system_config file. 
     <ul>
-      <li>Example: `data_file.csv`</li>
-      <li>Columns: `x`, `y`, `z`, `measurement`, etc.</li>
+      <li>Required File Name: `data.csv`</li>
+      <li>Columns: `x`, `y`, `z`, `sFz[1]`, etc.</li>
     </ul>
   </Card>
   <Card title="Offtime Sampling File" icon="square-2">
     A CSV file containing the receiver sampling times. This is used to define the sampling intervals during the off-time of the waveform.
+    The 'middle' column indicates the middle of the sampling interval. The file name is passed as a parameter in the system_config file. 
     <ul>
-      <li>Example: `offtime_sampling.csv`</li>
-      <li>Columns: `time`, `sampling_rate`, etc.</li>
+      <li>Example File Name: `offtime_sampling.csv`</li>
+      <li>Required Columns: `index`, `middle` </li>
     </ul>
   </Card>
   <Card title="Waveform File" icon="square-3">
-    A CSV file that defines the waveform from the source. It includes details about the waveform shape, duration, and other relevant parameters.
+    A CSV file that defines the waveform from the source. The file name is passed as a parameter in the system_config file. 
     <ul>
-      <li>Example: `waveform_definition.csv`</li>
-      <li>Columns: `time`, `amplitude`, etc.</li>
+    <ul>
+      <li>Example File Name: `waveform.csv`</li>
+      <li>Required Columns: `time`, `amplitude`</li>
     </ul>
   </Card>
   <Card title="System Configuration" icon="square-4" href="/25_aem/configuration/system">
     The system configuration file that outlines the setup of the survey system, including transmitter and receiver settings.
     <ul>
-      <li>Example: `system_config.yaml`</li>
+      <li>Required File Name: `system_config.yaml`</li>
     </ul>
   </Card>
   <Card title="Survey Configuration" icon="square-5" href="/25_aem/configuration/survey">
     The survey configuration file detailing the specific parameters of the survey, such as the area covered, line spacing, and other survey-specific details.
     <ul>
-      <li>Example: `survey_config.yaml`</li>
+      <li>Required File Name: `survey_config.yaml`</li>
     </ul>
   </Card>
   <Card title="Inversion Configuration" icon="square-6" href="/25_aem/configuration/inversion">
     The inversion configuration file that specifies the parameters and settings for the inversion process, including algorithm settings and initial models.
     <ul>
-      <li>Example: `inversion_config.yaml`</li>
+      <li>Required File Name: `inversion_config.yaml`</li>
     </ul>
   </Card>
   <Card title="Logo Image (optional)" icon="square-7">
     An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder if you wish to include a custom logo in the deliverables.
     <ul>
-      <li>Example: `company_logo.png`</li>
+      <li>Example File Name: `company_logo.png`</li>
     </ul>
   </Card>
 </CardGroup>
