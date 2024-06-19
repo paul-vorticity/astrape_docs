@@ -9,7 +9,7 @@ The `data` subfolder is crucial for organizing all the input files necessary for
 
 <CardGroup cols={1}>
   <Card title="Data File" icon="square-1">
-    The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes. The column names of the relevant data should be provided in the system_config.yaml. 
+    The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes. The column names of the relevant data should be provided in the config_system.yaml. 
     <ul>
       <li>Required File Name: `data.csv`</li>
       <li>Columns: `x`, `y`, `z`, `sFz[1]`, etc.</li>
@@ -17,14 +17,14 @@ The `data` subfolder is crucial for organizing all the input files necessary for
   </Card>
   <Card title="Offtime Sampling File" icon="square-2">
     A CSV file containing the receiver sampling times. This is used to define the sampling intervals during the off-time of the waveform.
-    The 'middle' column indicates the middle of the sampling interval. The file name is passed as a parameter in the system_config.yaml. 
+    The 'middle' column indicates the middle of the sampling interval. The file name is passed as a parameter in the config_system.yaml. 
     <ul>
       <li>Example File Name: `offtime_sampling.csv`</li>
       <li>Required Columns: `index`, `middle` </li>
     </ul>
   </Card>
   <Card title="Waveform File" icon="square-3">
-    A CSV file that defines the waveform from the source. The file name is passed as a parameter in the system_config file. 
+    A CSV file that defines the waveform from the source. The file name is passed as a parameter in the config_system file. 
     <ul>
       <li>Example File Name: `waveform.csv`</li>
       <li>Required Columns: `time`, `amplitude`</li>
@@ -33,23 +33,23 @@ The `data` subfolder is crucial for organizing all the input files necessary for
   <Card title="System Configuration" icon="square-4" href="/25_aem/configuration/system">
     The system configuration file that outlines the setup of the survey system, including transmitter and receiver settings.
     <ul>
-      <li>Required File Name: `system_config.yaml`</li>
+      <li>Required File Name: `config_system.yaml`</li>
     </ul>
   </Card>
   <Card title="Survey Configuration" icon="square-5" href="/25_aem/configuration/survey">
     The survey configuration file detailing the specific parameters of the survey, such as the area covered, line spacing, and other survey-specific details.
     <ul>
-      <li>Required File Name: `survey_config.yaml`</li>
+      <li>Required File Name: `config_survey.yaml`</li>
     </ul>
   </Card>
   <Card title="Inversion Configuration" icon="square-6" href="/25_aem/configuration/inversion">
     The inversion configuration file that specifies the parameters and settings for the inversion process, including algorithm settings and initial models.
     <ul>
-      <li>Required File Name: `inversion_config.yaml`</li>
+      <li>Required File Name: `config_inversion.yaml`</li>
     </ul>
   </Card>
   <Card title="Logo Image (optional)" icon="square-7">
-    An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder and the correct path should be passed in the system_config.yaml if you would like the logo to appear on the reports. 
+    An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder and the correct path should be passed in the config_system.yaml if you would like the logo to appear on the reports. 
     <ul>
       <li>Example File Name: `company_logo.png`</li>
     </ul>
