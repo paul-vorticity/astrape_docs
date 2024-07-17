@@ -31,14 +31,13 @@ description: 'Follow along our step-by-step guide to perform your first inversio
 
     This can be done with the following command: 
     ```
-    bazel run astrape/utils:preprocess -- -d /home/path_to_folder/ -df data.csv
+    astrape.exe preprocess /home/path_to_survey_folder
     ```
 
     <Info>
-    Please ensure to replace the 'path_to_folder' with the correct path. 
+    Please ensure to replace the 'path_to_survey_folder' with the correct path. 
     </Info>
     <Warning>Running the preprocessing script with incorrect paths or data can lead to errors. Verify your paths and data files before running the script.</Warning>
-    The -df option is the name of the data file within the data subfolder.
   </Step>
   <Step title="Prepare Survey + Inversion Configuration Files">
     After preprocessing the data, prepare the configuration files that define the survey area you are interested in inverting and the parameters for this inversion. 
@@ -49,13 +48,24 @@ description: 'Follow along our step-by-step guide to perform your first inversio
 
     This can be done with the following command: 
     ```
-    bazel run astrape/ray:survey_run /home/path_to_folder
+    astrape.exe run /home/path_to_survey_folder
     ```
     <Info>
     Once again, please ensure to replace the path to your inversion folder with the correct path. 
     </Info>
 
     <Warning>Depending on the number of survey lines, inversion parameters, and your hardware, the inversion process can take a significant amount of time. Please see our benchmarks for more details.</Warning> 
+  </Step>
+    <Step title="Perform Postprocessing">
+    After the inversion has been completed, you can perform postprocessing to analyze the results.
+
+    This can be done with the following command: 
+    ```
+    astrape.exe postprocess /home/path_to_survey_folder name_of_timestamped_run_subfolder
+    ```
+    <Info>
+    Once again, please ensure to replace the path to your inversion folder with the correct path and the name of the timestamped run subfolder.
+    </Info>
   </Step>
   <Step title="View Outputs">
     Once the inversion has been completed, you can view the outputs in the `deliverables` folder. 
