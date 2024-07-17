@@ -6,125 +6,6 @@ title: 'Inversion Configuration'
 
 The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
 
-### Experiment
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Experiment Name (name)">
-  The name of the experiment is "benchmark". This will be used in the name of the inversion folder. Data Type: String.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Shengbar Range (shengbar_range)">
-  The z range for Shengbar plots in the form of a list with two integers. This will determine the range that will be plotted as the model updates each iteration. Data Type: List of two integers.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Schedule Strategy (schedule_strategy)">
-  The scheduling strategy for the inversion is 'fixed'. Data Type: String.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Number of GPUs (num_gpu)">
-  The number of GPUs to be used on each line. Data Type: Positive Integer.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Source Dx (source_dx)">
-  The source dx value in meters. This is the distance between source-receiver pairs that will be sampled and used from the data. Data Type: Positive Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Use Topography (use_topo)">
-  Whether to use the topography in the inversion. If this is True the earth will not be approximated to have a flat surface at z=0. Data Type: Boolean.
-  </Accordion>
-</AccordionGroup>
-
-### Data
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Inversion Time Channel Start (inversion_tc_start)">
-  The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Inversion Time Channel End (inversion_tc_end)">
-  The index of the last time channel to be used in the inversion. Data Type: Positive Integer.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Data Epsilon (data_eps)">
-  The epsilon value for data processing in the inversion. Data Type: Positive Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Data Standard Deviation (data_std)">
-  The standard deviation for data noise. Data Type: Positive Float.
-  </Accordion>
-</AccordionGroup>
-
-### Inversion Constants
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Noise Threshold (noise_threshold)">
-  The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Optimizer (optimizer)">
-  The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient). Data Type: String.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Optimizer Constants (optimizer_constants)">
-  Constants for the optimizer, including:
-  * maxIter: Maximum number of iterations is set to 1. Data Type: Positive Integer.
-  * LSshorten: Line search shortening factor. Data Type: Positive Float.
-  * maxIterLS: Maximum number of line search iterations. Data Type: Positive Integer.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Beta Schedule (BetaSchedule)">
-  Settings for the beta schedule, including:
-  * coolingFactor: Cooling factor for the beta schedule. Data Type: Non-negative Float.
-  * coolingRate: Cooling rate for the beta schedule. Data Type: Non-negative Integer.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Beta (beta)">
-  The beta value for the inversion process. Data Type: Positive Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Alphas (alphas)">
-  Alpha values for the inversion, including:
-  * alpha_s: Alpha value for smoothness is 0.0025. Data Type: Non-negative Float.
-  * alpha_x: Alpha value for x-direction is 100.0. Data Type: Non-negative Float.
-  * alpha_y: Alpha value for y-direction is 100.0. Data Type: Non-negative Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Weighting Flag (weighting_flag)">
-  Whether to apply any depth weighting in the inversion. Data Type: Boolean.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Weighting Constants (weighting_constants)">
-  Constants for the weighting, including:
-  * type: Type of weighting. Data Type: String.
-  * alpha: Alpha value for weighting. Data Type: Non-negative Float.
-  * penetration_limit_start: Start value for penetration limit. Data Type: Non-negative Float.
-  * penetration_limit_end: End value for penetration limit. Data Type: Non-negative Float.
-  * limit_weight_max: Maximum weight limit. Data Type: Non-negative Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Upper Bound Flag (upper_bound_flag)">
-  Whether to apply an upper bound in the inversion. Data Type: Boolean.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Upper Bound Value (upper_bound_value)">
-  The upper bound value for the inversion. Data Type: Positive Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Regularization Sparse (reg_sparse)">
-  Whether to apply sparse regularization. Data Type: Boolean.
-  </Accordion>
-</AccordionGroup>
-
-### Initial Model
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Load Initial Model (load_init_model)">
-  Whether to load an initial model. Data Type: Boolean.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Initial Model Path (init_model_path)">
-  The path to the initial model file. Data Type: String.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Initial Directory Path (init_directory_path)">
-  The path to the directory containing initial model files. Data Type: String.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Initial Model Scale (init_model_scale)">
-  The scale of the initial model. Valid options are: "linear", "log". Data Type: String.
-  </Accordion>
-</AccordionGroup>
-
-### Sigmas
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Sigma Background (sigma_background)">
-  The background conductivity value. Data Type: Positive Float.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Sigma Air (sigma_air)">
-  The air conductivity value. Data Type: Positive Float.
-  </Accordion>
-</AccordionGroup>
-
 
 The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
 
@@ -182,3 +63,123 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
 
   ```
 </Accordion>
+
+
+### Experiment
+
+<AccordionGroup>
+  <Accordion  title="Experiment Name (name)">
+  The name of the experiment is "benchmark". This will be used in the name of the inversion folder. Data Type: String.
+  </Accordion>
+  <Accordion  title="Shengbar Range (shengbar_range)">
+  The z range for Shengbar plots in the form of a list with two integers. This will determine the range that will be plotted as the model updates each iteration. Data Type: List of two integers.
+  </Accordion>
+  <Accordion  title="Schedule Strategy (schedule_strategy)">
+  The scheduling strategy for the inversion is 'fixed'. Data Type: String.
+  </Accordion>
+  <Accordion  title="Number of GPUs (num_gpu)">
+  The number of GPUs to be used on each line. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion  title="Source Dx (source_dx)">
+  The source dx value in meters. This is the distance between source-receiver pairs that will be sampled and used from the data. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Use Topography (use_topo)">
+  Whether to use the topography in the inversion. If this is True the earth will not be approximated to have a flat surface at z=0. Data Type: Boolean.
+  </Accordion>
+</AccordionGroup>
+
+### Data
+
+<AccordionGroup>
+  <Accordion  title="Inversion Time Channel Start (inversion_tc_start)">
+  The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion  title="Inversion Time Channel End (inversion_tc_end)">
+  The index of the last time channel to be used in the inversion. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion  title="Data Epsilon (data_eps)">
+  The epsilon value for data processing in the inversion. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Data Standard Deviation (data_std)">
+  The standard deviation for data noise. Data Type: Positive Float.
+  </Accordion>
+</AccordionGroup>
+
+### Inversion Constants
+
+<AccordionGroup>
+  <Accordion  title="Noise Threshold (noise_threshold)">
+  The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Optimizer (optimizer)">
+  The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient). Data Type: String.
+  </Accordion>
+  <Accordion  title="Optimizer Constants (optimizer_constants)">
+  Constants for the optimizer, including:
+  * maxIter: Maximum number of iterations is set to 1. Data Type: Positive Integer.
+  * LSshorten: Line search shortening factor. Data Type: Positive Float.
+  * maxIterLS: Maximum number of line search iterations. Data Type: Positive Integer.
+  </Accordion>
+  <Accordion  title="Beta Schedule (BetaSchedule)">
+  Settings for the beta schedule, including:
+  * coolingFactor: Cooling factor for the beta schedule. Data Type: Non-negative Float.
+  * coolingRate: Cooling rate for the beta schedule. Data Type: Non-negative Integer.
+  </Accordion>
+  <Accordion  title="Beta (beta)">
+  The beta value for the inversion process. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Alphas (alphas)">
+  Alpha values for the inversion, including:
+  * alpha_s: Alpha value for smoothness is 0.0025. Data Type: Non-negative Float.
+  * alpha_x: Alpha value for x-direction is 100.0. Data Type: Non-negative Float.
+  * alpha_y: Alpha value for y-direction is 100.0. Data Type: Non-negative Float.
+  </Accordion>
+  <Accordion  title="Weighting Flag (weighting_flag)">
+  Whether to apply any depth weighting in the inversion. Data Type: Boolean.
+  </Accordion>
+  <Accordion  title="Weighting Constants (weighting_constants)">
+  Constants for the weighting, including:
+  * type: Type of weighting. Data Type: String.
+  * alpha: Alpha value for weighting. Data Type: Non-negative Float.
+  * penetration_limit_start: Start value for penetration limit. Data Type: Non-negative Float.
+  * penetration_limit_end: End value for penetration limit. Data Type: Non-negative Float.
+  * limit_weight_max: Maximum weight limit. Data Type: Non-negative Float.
+  </Accordion>
+  <Accordion  title="Upper Bound Flag (upper_bound_flag)">
+  Whether to apply an upper bound in the inversion. Data Type: Boolean.
+  </Accordion>
+  <Accordion  title="Upper Bound Value (upper_bound_value)">
+  The upper bound value for the inversion. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Regularization Sparse (reg_sparse)">
+  Whether to apply sparse regularization. Data Type: Boolean.
+  </Accordion>
+</AccordionGroup>
+
+### Initial Model
+
+<AccordionGroup>
+  <Accordion  title="Load Initial Model (load_init_model)">
+  Whether to load an initial model. Data Type: Boolean.
+  </Accordion>
+  <Accordion  title="Initial Model Path (init_model_path)">
+  The path to the initial model file. Data Type: String.
+  </Accordion>
+  <Accordion  title="Initial Directory Path (init_directory_path)">
+  The path to the directory containing initial model files. Data Type: String.
+  </Accordion>
+  <Accordion  title="Initial Model Scale (init_model_scale)">
+  The scale of the initial model. Valid options are: "linear", "log". Data Type: String.
+  </Accordion>
+</AccordionGroup>
+
+### Sigmas
+
+<AccordionGroup>
+  <Accordion  title="Sigma Background (sigma_background)">
+  The background conductivity value. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Sigma Air (sigma_air)">
+  The air conductivity value. Data Type: Positive Float.
+  </Accordion>
+</AccordionGroup>

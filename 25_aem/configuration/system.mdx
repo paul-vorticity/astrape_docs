@@ -4,6 +4,49 @@ title: 'System Configuration'
 
 The system configuration file defines the parameters and settings required for the initial setup and operation of the survey system. It includes specifications for the transmitter, data handling, waveform properties, and receiver configurations to ensure accurate data collection and processing.
 
+
+The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
+
+<Accordion title="Example System Configuration File:">
+  ```yaml config_system.yaml
+  deliverables: 
+    logo_file: "astrape.png"
+    area_name: "Benchmark"
+    project_id: "benchmark_1234"
+
+  transmitter:
+    off_time_s: 0.0059
+    peak_time_s: 0.00335
+    tx_radius_m: 17.5
+    tx_turns: 4
+    ramp_on_rate: 3.0
+
+  data: 
+    col_names: 
+      xcol: "x"
+      ycol: "y"
+      zcol: "radarb"
+      sfz: "SFz"
+      line_column: "Line"
+      topo_column: "DEM"
+
+  waveform: 
+    filepath: "waveform.csv"
+    type: "VTEM"
+    current_col: "Tx_curr"
+    time_col: "Time"
+    
+  receiver: 
+    data_tc_end: 47
+    data_tc_start: 14
+    sampling_filepath: "offtime_sampling.csv"
+    sampling_col_name: "Middle"
+    file_start_index: 14
+    time_scale_s: 1.0e-3
+  ```
+</Accordion>
+
+
 ### Deliverables
 
 <AccordionGroup>
@@ -102,44 +145,3 @@ The index of the first data point in the data file. Data Type: Positive Integer.
 The name of the column within the data file that provides the sampling times for the offtime data. Data Type: String.
 </Accordion>
 </AccordionGroup>
-
-The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
-
-<Accordion title="Example System Configuration File:">
-  ```yaml config_system.yaml
-  deliverables: 
-    logo_file: "astrape.png"
-    area_name: "Benchmark"
-    project_id: "benchmark_1234"
-
-  transmitter:
-    off_time_s: 0.0059
-    peak_time_s: 0.00335
-    tx_radius_m: 17.5
-    tx_turns: 4
-    ramp_on_rate: 3.0
-
-  data: 
-    col_names: 
-      xcol: "x"
-      ycol: "y"
-      zcol: "radarb"
-      sfz: "SFz"
-      line_column: "Line"
-      topo_column: "DEM"
-
-  waveform: 
-    filepath: "waveform.csv"
-    type: "VTEM"
-    current_col: "Tx_curr"
-    time_col: "Time"
-    
-  receiver: 
-    data_tc_end: 47
-    data_tc_start: 14
-    sampling_filepath: "offtime_sampling.csv"
-    sampling_col_name: "Middle"
-    file_start_index: 14
-    time_scale_s: 1.0e-3
-  ```
-</Accordion>
