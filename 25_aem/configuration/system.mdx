@@ -33,9 +33,6 @@ The number of turns in the transmitter coil. This must be an integer and it is u
 <Accordion icon="rectangle-terminal" title="Peak Time (peak_time_s)">
 (Optional) The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Area (tx_area_m)">
-(Optional) The area of the transmitter loop in square meters. Defaults to `3848.0 * tx_radius_m2. Data Type: Positive Float.
-</Accordion>
 <Accordion icon="rectangle-terminal" title="Ramp-on Rate (ramp_on_rate)">
 (Optional) The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
 </Accordion>
@@ -62,12 +59,6 @@ The prefix used within the data file to identify the column containing the deriv
 <Accordion icon="rectangle-terminal" title="Topography Column (topo_col)">
 (Optional) The name of the column within the data file that provides the digital elevation model (DEM) of the sounding. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Data Epsilon (data_eps)">
-The data uncertainty used in the loss function. Refer to the loss function documentation for more details. Data Type: Positive Float (typically a small value).
-</Accordion>
-<Accordion icon="rectangle-terminal" title="Standard Deviation (data_std)">
-The percentage data uncertainty used in the loss function. Refer to the loss function documentation for more details. Data Type: Positive Float between 0 and 1 (represents a percentage).
-</Accordion>
 </AccordionGroup>
 
 ### Waveform 
@@ -78,13 +69,14 @@ The type of waveform used. Valid options are:
 * "VTEM"
 * "XCite"
 </Accordion>
+<Accordion icon="rectangle-terminal" title="Current Column Name (current_col)">
+The name of the column within the data file that provides the current waveform data. Data Type: String.
+</Accordion>
+<Accordion icon="rectangle-terminal" title="Time Column Name (time_col)">
+The name of the column within the data file that provides the time values for the current waveform data. Data Type: String.
+</Accordion>
 <Accordion icon="rectangle-terminal" title="Filepath (filepath)">
 (Optional) The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
-</Accordion>
-<Accordion icon="rectangle-terminal" title="Discretization (discretization)">
-A list of lists defining the time sampling points and their corresponding number of repetitions. Each sub-list contains two elements:
-* The first element is the time value in seconds. Data Type: Float.
-* The second element is the number of repetitions for that time point. Data Type: Integer.
 </Accordion>
 </AccordionGroup>
 
@@ -103,6 +95,12 @@ The filename (including extension) of the file within the data folder that conta
 <Accordion icon="rectangle-terminal" title="Offtime Sampling Time Scale (time_scale_s)">
 The scale factor applied to the time values provided in the offtime_sampling file. Data Type: Positive Float (e.g., 1.0e-3 represents milliseconds).
 </Accordion>
+<Accordion icon="rectangle-terminal" title="File Start Index (file_start_index)">
+The index of the first data point in the data file. Data Type: Positive Integer.
+</Accordion>
+<Accordion icon="rectangle-terminal" title="Sampling Column Name (sampling_col_name)">
+The name of the column within the data file that provides the sampling times for the offtime data. Data Type: String.
+</Accordion>
 </AccordionGroup>
 
 The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
@@ -110,16 +108,15 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
 <Accordion title="Example System Configuration File:">
   ```yaml config_system.yaml
   deliverables: 
-    logo_file: "logo.png"
-    area_name: "Example Property"
-    project_id: "Project_1234"
+    logo_file: "astrape.png"
+    area_name: "Benchmark"
+    project_id: "benchmark_1234"
 
   transmitter:
-    tx_radius_m: 13
+    off_time_s: 0.0059
+    peak_time_s: 0.00335
+    tx_radius_m: 17.5
     tx_turns: 4
-    off_time_s: 7.2e-3
-    peak_time_s: 5.46e-3
-    tx_area_m: 2123.7
     ramp_on_rate: 3.0
 
   data: 
@@ -127,29 +124,22 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
       xcol: "x"
       ycol: "y"
       zcol: "radarb"
-      sfz: "sFz"
+      sfz: "SFz"
+      line_column: "Line"
       topo_column: "DEM"
-      line_column: "Lines"
-    data_eps: 2.0e-13
-    data_std: 0.1
 
   waveform: 
-    filepath: ""
+    filepath: "waveform.csv"
     type: "VTEM"
-    discretization: 
-    - [0.364e-3, 15]
-    - [0.116e-3, 15]
-    - [5.0e-6, 13]
-    - [1.53619e-5, 13] 
-    - [5.272724e-5, 13]
-    - [1.8097755e-4, 13]
-    - [6.2117556e-4, 13]
-
+    current_col: "Tx_curr"
+    time_col: "Time"
+    
   receiver: 
-    data_tc_end: 33
-    data_tc_start: 10
+    data_tc_end: 47
+    data_tc_start: 14
     sampling_filepath: "offtime_sampling.csv"
-    file_start_index: 0
+    sampling_col_name: "Middle"
+    file_start_index: 14
     time_scale_s: 1.0e-3
   ```
 </Accordion>

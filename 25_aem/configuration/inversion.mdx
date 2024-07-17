@@ -4,63 +4,45 @@ title: 'Inversion Configuration'
 
 ---
 
-The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, mesh configuration, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
+The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
 
 ### Experiment
 
 <AccordionGroup>
   <Accordion icon="rectangle-terminal" title="Experiment Name (name)">
-  The name of the experiment. This will be used in the name of the inversion folder. Data Type: String.
+  The name of the experiment is "benchmark". This will be used in the name of the inversion folder. Data Type: String.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Shengbar Range (shengbar_range)">
   The z range for Shengbar plots in the form of a list with two integers. This will determine the range that will be plotted as the model updates each iteration. Data Type: List of two integers.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Schedule Strategy (schedule_strategy)">
-  The scheduling strategy for the inversion. Valid options are: "minimum", "fixed", "maximum_available", "maximum". Data Type: String.
+  The scheduling strategy for the inversion is 'fixed'. Data Type: String.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Number of GPUs (num_gpu)">
-  This is only applicable if the schedule strategy chosen is 'fixed'. The number of GPUs to be used on each line. Data Type: Positive Integer.
+  The number of GPUs to be used on each line. Data Type: Positive Integer.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Source Dx (source_dx)">
   The source dx value in meters. This is the distance between source-receiver pairs that will be sampled and used from the data. Data Type: Positive Float.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Use Topography (use_topo)">
-  Whether to use the topography in the inversion. If this is False the earth will be approximated to have a flat surface at z=0. Data Type: Boolean.
+  Whether to use the topography in the inversion. If this is True the earth will not be approximated to have a flat surface at z=0. Data Type: Boolean.
   </Accordion>
+</AccordionGroup>
+
+### Data
+
+<AccordionGroup>
   <Accordion icon="rectangle-terminal" title="Inversion Time Channel Start (inversion_tc_start)">
   The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Inversion Time Channel End (inversion_tc_end)">
   The index of the last time channel to be used in the inversion. Data Type: Positive Integer.
   </Accordion>
-</AccordionGroup>
-
-### Mesh
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Cell Sizes (cell_sizes)">
-  The sizes of the mesh cells in the core domain region in meters. Data Type: List of three positive integers.
+  <Accordion icon="rectangle-terminal" title="Data Epsilon (data_eps)">
+  The epsilon value for data processing in the inversion. Data Type: Positive Float.
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain X (min_mesh_domain_x)">
-  The minimum domain of the mesh in the X direction as a list of two integers. Data Type: List of two integers.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain Y (min_mesh_domain_y)">
-  The minimum domain of the mesh in the Y direction as a list of two integers. Data Type: List of two integers.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain Z (min_mesh_domain_z)">
-  The minimum domain of the mesh in the Z direction as a list of two integers. Data Type: List of two integers.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Padding (padding)">
-  The padding value for the mesh. Data Type: Positive Integer.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Core Domain X (core_domain_x)">
-  The core domain of the mesh in the X direction as a list of two integers. Data Type: List of two integers.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Core Domain Y (core_domain_y)">
-  The core domain of the mesh in the Y direction as a list of two integers. Data Type: List of two integers.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Core Domain Z (core_domain_z)">
-  The core domain of the mesh in the Z direction as a list of two integers. Data Type: List of two integers.
+  <Accordion icon="rectangle-terminal" title="Data Standard Deviation (data_std)">
+  The standard deviation for data noise. Data Type: Positive Float.
   </Accordion>
 </AccordionGroup>
 
@@ -71,11 +53,11 @@ The inversion configuration file specifies the parameters and algorithms used to
   The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Optimizer (optimizer)">
-  The optimizer to be used for the inversion. Valid options are: "PGNCG", "IGN". "PGNCG" is Projected Gauss-Newton Conjugate Gradient and "IGN" is Inexact Gauss-Newton. Data Type: String.
+  The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient). Data Type: String.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Optimizer Constants (optimizer_constants)">
   Constants for the optimizer, including:
-  * maxIter: Maximum number of iterations. Data Type: Positive Integer.
+  * maxIter: Maximum number of iterations is set to 1. Data Type: Positive Integer.
   * LSshorten: Line search shortening factor. Data Type: Positive Float.
   * maxIterLS: Maximum number of line search iterations. Data Type: Positive Integer.
   </Accordion>
@@ -89,9 +71,9 @@ The inversion configuration file specifies the parameters and algorithms used to
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Alphas (alphas)">
   Alpha values for the inversion, including:
-  * alpha_s: Alpha value for smoothness. Data Type: Positive Float or specific string.
-  * alpha_x: Alpha value for x-direction. Data Type: Non-negative Float.
-  * alpha_y: Alpha value for y-direction. Data Type: Non-negative Float.
+  * alpha_s: Alpha value for smoothness is 0.0025. Data Type: Non-negative Float.
+  * alpha_x: Alpha value for x-direction is 100.0. Data Type: Non-negative Float.
+  * alpha_y: Alpha value for y-direction is 100.0. Data Type: Non-negative Float.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Weighting Flag (weighting_flag)">
   Whether to apply any depth weighting in the inversion. Data Type: Boolean.
@@ -149,30 +131,24 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
 <Accordion title="Example Inversion Configuration File:">
   ```yaml config_inversion.yaml
   experiment: 
-    name: "example_run"
+    name: "benchmark"
     shengbar_range: [-500,350]
     schedule_strategy: "fixed"
     num_gpu: 2
     source_dx: 10
     use_topo: True
-    inversion_tc_start: 10
-    inversion_tc_end: 33
-
-  mesh: 
-    cell_sizes: [20,20,20]
-    min_mesh_domain_x: [-1000, 1000]
-    min_mesh_domain_y: [-500, 500]
-    min_mesh_domain_z: [-1000, 1000]
-    padding: 2
-    core_domain_x: [-100, 100]  
-    core_domain_y: [-50, 50]
-    core_domain_z: [-400, 60] 
+  
+  data:  
+    inversion_tc_start: 14
+    inversion_tc_end: 24
+    data_eps: 1.0e-14
+    data_std: 0.05
 
   inversion_constants:
     noise_threshold: 1.0e-12
     optimizer: "PGNCG"
     optimizer_constants:
-      maxIter: 25
+      maxIter: 1
       LSshorten: 0.5
       maxIterLS: 20
     BetaSchedule:
@@ -180,9 +156,9 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
       coolingRate: 3
     beta: 2.0
     alphas: 
-      alpha_s: 0.025
-      alpha_x: 1.0
-      alpha_y: 1.0
+      alpha_s: 0.0025
+      alpha_x: 100.0
+      alpha_y: 100.0
     weighting_flag: False
     weighting_constants:
       type: "penetration_limit"
@@ -203,5 +179,6 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
   sigmas:
     sigma_background: 1.0e-3
     sigma_air: 1.0e-8
+
   ```
 </Accordion>

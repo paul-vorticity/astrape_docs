@@ -1,0 +1,73 @@
+---
+title: 'Discretization Configuration'
+---
+
+The discretization configuration specifies the spatial and temporal discretization parameters for the AEM inversion. 
+
+A default configuration file will be generated during the preprocessing step. The discretization provided in the default configuration file is based upon the provided waveform, receiver time channels and other parameters provided in the system configuration file.
+
+The configuration file is provided as a yaml file in the data subfolder. After the preprocessing step, the user can modify the configuration file to adjust the discretization parameters as they see fit.
+
+### Mesh
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Cell Sizes (cell_sizes)">
+    The cell sizes in the x, y, and z directions. Data Type: List of Positive Floats.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain X (min_mesh_domain_x)">
+    The minimum and maximum values of the mesh domain in the x-direction. Data Type: List of Floats.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain Y (min_mesh_domain_y)">
+    The minimum and maximum values of the mesh domain in the y-direction. Data Type: List of Floats.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Minimum Mesh Domain Z (min_mesh_domain_z)">
+    The minimum and maximum values of the mesh domain in the z-direction. Data Type: List of Floats.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Padding (padding)">
+    The number of padding cells around the core domain. Data Type: Positive Integer.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Core Domain X (core_domain_x)">
+    The minimum and maximum values of the core domain in the x-direction. Data Type: List of Floats.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Core Domain Y (core_domain_y)">
+    The minimum and maximum values of the core domain in the y-direction. Data Type: List of Floats.
+    </Accordion>
+    <Accordion icon="rectangle-terminal" title="Core Domain Z (core_domain_z)">
+    The minimum and maximum values of the core domain in the z-direction. Data Type: List of Floats.
+    </Accordion>
+</AccordionGroup>
+
+### Time Discretization
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="Time Discretization">
+    The time discretization parameters. Data Type: List of Lists of Floats.
+    The inner list contains two values: the time step and the number of time steps.
+    </Accordion>    
+</AccordionGroup>
+
+Please see the following example: 
+
+<Accordion title="Example Discretization Configuration File:">
+  ```yaml config_discretization.yaml
+  mesh: 
+  cell_sizes: [20,20,20]
+  min_mesh_domain_x: [-1000, 1000]
+  min_mesh_domain_y: [-500, 500]
+  min_mesh_domain_z: [-1000, 1000]
+  padding: 3
+  core_domain_x: [-100, 100]  
+  core_domain_y: [-50, 50]
+  core_domain_z: [-400, 60] 
+  
+time_discretization: 
+- [0.00067,5]
+- [0.00051,5]
+- [5.0e-06,10]
+- [1.0e-05,5]
+- [5.0e-05,5]
+- [0.0001,10]
+- [0.0005,20]
+
+  ```
+</Accordion>
