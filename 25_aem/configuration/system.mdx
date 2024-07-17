@@ -7,13 +7,13 @@ The system configuration file defines the parameters and settings required for t
 ### Deliverables
 
 <AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="Logo File (logo_file)">
+  <Accordion  title="Logo File (logo_file)">
   The filename (including extension) of the customer company logo image file within the data folder. This image will appear in the final reports. Data Type: Optional String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Area Name (area_name)">
+<Accordion  title="Area Name (area_name)">
 The name of the survey area for which the inversion is performed.  Data Type: Optional String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Project ID (project_id)">
+<Accordion  title="Project ID (project_id)">
 The ID of the project for which the inversion is performed. Data Type: Optional String.
 </Accordion>
 </AccordionGroup>
@@ -21,19 +21,19 @@ The ID of the project for which the inversion is performed. Data Type: Optional 
 ### Transmitter
 
 <AccordionGroup>
-<Accordion icon="rectangle-terminal" title="Radius (tx_radius_m)">
+<Accordion  title="Radius (tx_radius_m)">
 The radius of the transmitter loop in meters. This is used for the modelling of the signal. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Turns (tx_turns)">
+<Accordion  title="Turns (tx_turns)">
 The number of turns in the transmitter coil. This must be an integer and it is used for the modelling of the signal. Data Type: Positive Integer.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Off Time (off_time_s)">
+<Accordion  title="Off Time (off_time_s)">
 (Optional) The off-time of the transmitter waveform in seconds. Defaults to 0.0059. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Peak Time (peak_time_s)">
+<Accordion  title="Peak Time (peak_time_s)">
 (Optional) The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Ramp-On Rate (ramp_on_rate)">
+<Accordion  title="Ramp-On Rate (ramp_on_rate)">
 (Optional) The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
 </Accordion>
 </AccordionGroup>
@@ -41,22 +41,22 @@ The number of turns in the transmitter coil. This must be an integer and it is u
 ### Data
 
 <AccordionGroup>
-<Accordion icon="rectangle-terminal" title="Easting Column (xcol)">
+<Accordion  title="Easting Column (xcol)">
 The name of the column within the data file that provides the easting coordinates (in meters) of each sounding. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Northing Column (ycol)">
+<Accordion  title="Northing Column (ycol)">
 The name of the column within the data file that provides the northing coordinates (in meters) of each sounding. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Loop Terrain Clearance (zcol)">
+<Accordion  title="Loop Terrain Clearance (zcol)">
 The name of the column within the data file that provides the EM transmitter-receiver loop terrain clearance. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Data Column (sfz)">
+<Accordion  title="Data Column (sfz)">
 The prefix used within the data file to identify the column containing the derivative of the magnetic field in the z-direction. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Line Column (line_col)">
+<Accordion  title="Line Column (line_col)">
 (Optional) The name of the column within the data file that indicates the line of the sounding. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Topography Column (topo_col)">
+<Accordion  title="Topography Column (topo_col)">
 (Optional) The name of the column within the data file that provides the digital elevation model (DEM) of the sounding. Data Type: String.
 </Accordion>
 </AccordionGroup>
@@ -64,18 +64,18 @@ The prefix used within the data file to identify the column containing the deriv
 ### Waveform 
 
 <AccordionGroup>
-<Accordion icon="rectangle-terminal" title="Waveform Type (type)">
+<Accordion  title="Waveform Type (type)">
 The type of waveform used. Valid options are:
 * "VTEM"
 * "XCite"
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Current Column Name (current_col)">
+<Accordion  title="Current Column Name (current_col)">
 The name of the column within the data file that provides the current waveform data. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Time Column Name (time_col)">
+<Accordion  title="Time Column Name (time_col)">
 The name of the column within the data file that provides the time values for the current waveform data. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Filepath (filepath)">
+<Accordion  title="Filepath (filepath)">
 (Optional) The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
 </Accordion>
 </AccordionGroup>
@@ -83,22 +83,22 @@ The name of the column within the data file that provides the time values for th
 ### Receiver
 
 <AccordionGroup>
-<Accordion icon="rectangle-terminal" title="Time Channel Start (data_tc_start)">
+<Accordion  title="Time Channel Start (data_tc_start)">
 The index of the first time channel in the data file for which data is available. Data Type: Positive Integer.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Time Channel End (data_tc_end)">
+<Accordion  title="Time Channel End (data_tc_end)">
 The index of the last time channel in the data file for which data is available. Data Type: Positive Integer (must be greater than or equal to data_tc_start).
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Offtime Sampling Filepath (sampling_filepath)">
+<Accordion  title="Offtime Sampling Filepath (sampling_filepath)">
 The filename (including extension) of the file within the data folder that contains the times of the offtime sampling. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Offtime Sampling Time Scale (time_scale_s)">
+<Accordion  title="Offtime Sampling Time Scale (time_scale_s)">
 The scale factor applied to the time values provided in the offtime_sampling file. Data Type: Positive Float (e.g., 1.0e-3 represents milliseconds).
 </Accordion>
-<Accordion icon="rectangle-terminal" title="File Start Index (file_start_index)">
+<Accordion  title="File Start Index (file_start_index)">
 The index of the first data point in the data file. Data Type: Positive Integer.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Sampling Column Name (sampling_col_name)">
+<Accordion  title="Sampling Column Name (sampling_col_name)">
 The name of the column within the data file that provides the sampling times for the offtime data. Data Type: String.
 </Accordion>
 </AccordionGroup>
