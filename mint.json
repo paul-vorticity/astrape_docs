@@ -5,7 +5,7 @@
     "dark": "/logo/white_astrape_vorticity.png",
     "light": "/logo/astrape_vorticity.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "colors": {
     "primary": "#2980B9",
     "light": "#3498DB",
