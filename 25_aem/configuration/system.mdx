@@ -27,13 +27,13 @@ The radius of the transmitter loop in meters. This is used for the modelling of 
 <Accordion icon="rectangle-terminal" title="Turns (tx_turns)">
 The number of turns in the transmitter coil. This must be an integer and it is used for the modelling of the signal. Data Type: Positive Integer.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Off-time (off_time_s)">
+<Accordion icon="rectangle-terminal" title="Off Time (off_time_s)">
 (Optional) The off-time of the transmitter waveform in seconds. Defaults to 0.0059. Data Type: Positive Float.
 </Accordion>
 <Accordion icon="rectangle-terminal" title="Peak Time (peak_time_s)">
 (Optional) The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="Ramp-on Rate (ramp_on_rate)">
+<Accordion icon="rectangle-terminal" title="Ramp-On Rate (ramp_on_rate)">
 (Optional) The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
 </Accordion>
 </AccordionGroup>
@@ -47,7 +47,7 @@ The name of the column within the data file that provides the easting coordinate
 <Accordion icon="rectangle-terminal" title="Northing Column (ycol)">
 The name of the column within the data file that provides the northing coordinates (in meters) of each sounding. Data Type: String.
 </Accordion>
-<Accordion icon="rectangle-terminal" title="A-Column (zcol)">
+<Accordion icon="rectangle-terminal" title="Loop Terrain Clearance (zcol)">
 The name of the column within the data file that provides the EM transmitter-receiver loop terrain clearance. Data Type: String.
 </Accordion>
 <Accordion icon="rectangle-terminal" title="Data Column (sfz)">
@@ -64,7 +64,7 @@ The prefix used within the data file to identify the column containing the deriv
 ### Waveform 
 
 <AccordionGroup>
-<Accordion icon="rectangle-terminal" title="Type (type)">
+<Accordion icon="rectangle-terminal" title="Waveform Type (type)">
 The type of waveform used. Valid options are:
 * "VTEM"
 * "XCite"

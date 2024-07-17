@@ -26,18 +26,22 @@ description: 'Follow along our step-by-step guide to perform your first inversio
     This file defines how we read the data and the specifications of the airborne EM system. 
     Refer to the system configuration [page](/25_aem/configuration/system) for more details. 
   </Step>
-  <Step title="Perform Preprocessing ">
+  <Step title="Preprocessing ">
     In order to ensure we have setup our configuration file correctly and that the data is ready for the inverison we will run the preprocessing script.
 
     This can be done with the following command: 
     ```
-    astrape.exe preprocess /home/path_to_survey_folder
+    astrape_25d preprocess /home/path_to_survey_folder
     ```
 
     <Info>
     Please ensure to replace the 'path_to_survey_folder' with the correct path. 
     </Info>
     <Warning>Running the preprocessing script with incorrect paths or data can lead to errors. Verify your paths and data files before running the script.</Warning>
+
+    During the preprocessing step, the code will generate the discretization configuration file based on the provided data. It will also generate a line report and a discretization report to help you verify the data and discretization parameters.
+
+    <Check>During the preprocessing step, the code will generate a csv file called data_modified.csv. This file will contain the data that will be used for the inversion in order to ensure the original data is not modified.</Check>
   </Step>
   <Step title="Prepare Survey + Inversion Configuration Files">
     After preprocessing the data, prepare the configuration files that define the survey area you are interested in inverting and the parameters for this inversion. 
@@ -48,7 +52,7 @@ description: 'Follow along our step-by-step guide to perform your first inversio
 
     This can be done with the following command: 
     ```
-    astrape.exe run /home/path_to_survey_folder
+    astrape_25d run /home/path_to_survey_folder
     ```
     <Info>
     Once again, please ensure to replace the path to your inversion folder with the correct path. 
@@ -56,12 +60,12 @@ description: 'Follow along our step-by-step guide to perform your first inversio
 
     <Warning>Depending on the number of survey lines, inversion parameters, and your hardware, the inversion process can take a significant amount of time. Please see our benchmarks for more details.</Warning> 
   </Step>
-    <Step title="Perform Postprocessing">
+    <Step title="Postprocessing">
     After the inversion has been completed, you can perform postprocessing to analyze the results.
 
     This can be done with the following command: 
     ```
-    astrape.exe postprocess /home/path_to_survey_folder name_of_run_subfolder
+    astrape_25d postprocess /home/path_to_survey_folder name_of_run_subfolder
     ```
     <Info>
     Once again, please ensure to replace the path to your inversion folder with the correct path and the name of the timestamped run subfolder.
