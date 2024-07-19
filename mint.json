@@ -43,24 +43,16 @@
       "group": "Getting Started",
       "pages": [
         "started/introduction", 
-        "started/science", 
-        "started/fast"
+        "started/mission"
       ]
     },
     {
       "group": "Essentials",
       "pages": [
-        "essentials/code",
         "essentials/hardware",
-        "essentials/benchmarks"
-      ]
-    },
-    {
-      "group": "Inversion Fundamentals",
-      "pages": [
-        "fundamentals/data_misfits",
-        "fundamentals/navigation",
-        "fundamentals/settings"
+        "essentials/blits",
+        "essentials/ray",
+        "essentials/science"
       ]
     },
     {
