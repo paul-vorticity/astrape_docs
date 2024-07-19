@@ -4,7 +4,35 @@ title: 'Discretization Configuration'
 
 The discretization configuration specifies the spatial and temporal discretization parameters for the AEM inversion. 
 
+<Tip>
 A default configuration file will be generated during the preprocessing step. The discretization provided in the default configuration file is based upon the provided waveform, receiver time channels and other parameters provided in the system configuration file.
+</Tip>
+
+Please see the following example: 
+
+<Accordion title="Example Discretization Configuration File:">
+  ```yaml config_discretization.yaml
+  mesh: 
+  cell_sizes: [20,20,20]
+  min_mesh_domain_x: [-1000, 1000]
+  min_mesh_domain_y: [-500, 500]
+  min_mesh_domain_z: [-1000, 1000]
+  padding: 3
+  core_domain_x: [-100, 100]  
+  core_domain_y: [-50, 50]
+  core_domain_z: [-400, 60] 
+  
+time_discretization: 
+- [0.00067,5]
+- [0.00051,5]
+- [5.0e-06,10]
+- [1.0e-05,5]
+- [5.0e-05,5]
+- [0.0001,10]
+- [0.0005,20]
+
+  ```
+</Accordion>
 
 The configuration file is provided as a yaml file in the data subfolder. After the preprocessing step, the user can modify the configuration file to adjust the discretization parameters as they see fit.
 
@@ -45,29 +73,3 @@ The configuration file is provided as a yaml file in the data subfolder. After t
     The inner list contains two values: the time step and the number of time steps.
     </Accordion>    
 </AccordionGroup>
-
-Please see the following example: 
-
-<Accordion title="Example Discretization Configuration File:">
-  ```yaml config_discretization.yaml
-  mesh: 
-  cell_sizes: [20,20,20]
-  min_mesh_domain_x: [-1000, 1000]
-  min_mesh_domain_y: [-500, 500]
-  min_mesh_domain_z: [-1000, 1000]
-  padding: 3
-  core_domain_x: [-100, 100]  
-  core_domain_y: [-50, 50]
-  core_domain_z: [-400, 60] 
-  
-time_discretization: 
-- [0.00067,5]
-- [0.00051,5]
-- [5.0e-06,10]
-- [1.0e-05,5]
-- [5.0e-05,5]
-- [0.0001,10]
-- [0.0005,20]
-
-  ```
-</Accordion>
