@@ -6,60 +6,58 @@ title: 'Inversion Configuration'
 
 The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
 
+A default configuration file will be generated during the preprocessing step. The inversion provided in the default configuration file is based upon the provided data and other parameters provided in the system configuration file. After the preprocessing step, the user can modify the configuration file to adjust the inversion parameters as they see fit.
 
-The configuration file is provided as a yaml file in the data subfolder. Please see the following example: 
+
+Please see the following example: 
 
 <Accordion title="Example Inversion Configuration File:">
   ```yaml config_inversion.yaml
-  experiment: 
-    name: "benchmark"
-    shengbar_range: [-500,350]
-    schedule_strategy: "fixed"
-    num_gpu: 2
+  experiment:
+    name: default
+    gpu_memory: 80
     source_dx: 10
-    use_topo: True
-  
-  data:  
-    inversion_tc_start: 14
-    inversion_tc_end: 24
-    data_eps: 1.0e-14
-    data_std: 0.05
-
-  inversion_constants:
-    noise_threshold: 1.0e-12
-    optimizer: "PGNCG"
-    optimizer_constants:
-      maxIter: 1
-      LSshorten: 0.5
-      maxIterLS: 20
-    BetaSchedule:
-      coolingFactor: 1
-      coolingRate: 3
-    beta: 2.0
-    alphas: 
-      alpha_s: 0.0025
-      alpha_x: 100.0
-      alpha_y: 100.0
-    weighting_flag: False
-    weighting_constants:
-      type: "penetration_limit"
-      alpha: 2.0
-      penetration_limit_start: 600
-      penetration_limit_end: 650
-      limit_weight_max: 5
-    upper_bound_flag: False
-    upper_bound_value: 3 
-    reg_sparse: False
-
-  init_model: 
-    load_init_model: False
-    init_model_path: ""
-    init_directory_path: ""
-    init_model_scale: "log"
-
+    use_topo: true    
+    schedule_strategy: minimum
+    num_gpu: null
+  data:
+    data_eps: 2.5e-12
+    data_std: 0.1
+    noise_threshold: null
+    inversion_tc_start: 5
+    inversion_tc_end: 29
   sigmas:
-    sigma_background: 1.0e-3
-    sigma_air: 1.0e-8
+    sigma_background: 0.001
+    sigma_air: 1.0e-08
+  inversion_constants:
+    optimizer: PGNCG
+    optimizer_constants:
+      maxIter: 15
+      LSshorten: 0.5
+      maxIterLS: 10
+    beta_schedule:
+      cooling_factor: 1.0
+      cooling_rate: 1.0
+    beta: 0.0
+    alphas:
+      alpha_s: null
+      alpha_x: null
+      alpha_y: null
+    weighting_flag: false
+    weighting_constants:
+      type: null
+      alpha: null
+      penetration_limit_start: null
+      penetration_limit_end: null
+      limit_weight_max: null
+    upper_bound_flag: false
+    upper_bound_value: null
+    reg_sparse: false
+  init_model:
+    load_init_model: false
+    init_model_path: null
+    init_directory_path: null
+    init_model_scale: null
 
   ```
 </Accordion>
@@ -74,46 +72,46 @@ The following sections describe the key components of the inversion configuratio
   The name of the experiment is "benchmark". This will be used in the name of the inversion folder. Data Type: String.
   <Warning> The experiment name should not contain any spaces, otherwise, the inversion process may fail. </Warning>
   </Accordion>
-  <Accordion  title="Shengbar Range (shengbar_range)">
-  The z range for Shengbar plots in the form of a list with two integers. This will determine the range that will be plotted as the model updates each iteration. Data Type: List of two integers.
-  </Accordion>
-  <Accordion  title="Schedule Strategy (schedule_strategy)">
-  The scheduling strategy for the inversion is 'fixed'. Data Type: String.
-  </Accordion>
-  <Accordion  title="Number of GPUs (num_gpu)">
-  The number of GPUs to be used on each line. Data Type: Positive Integer.
+  <Accordion  title="GPU Memory (gpu_memory)">
+  The amount of gib of memory available on the type of GPU being used. Data Type: Positive Float.
   </Accordion>
   <Accordion  title="Source Dx (source_dx)">
   The source dx value in meters. This is the distance between source-receiver pairs that will be sampled and used from the data. Data Type: Positive Float.
-  </Accordion>
+  </Accordion>  
   <Accordion  title="Use Topography (use_topo)">
   Whether to use the topography in the inversion. If this is True the earth will not be approximated to have a flat surface at z=0. Data Type: Boolean.
-  </Accordion>
+  </Accordion>  
+  <Accordion  title="Schedule Strategy (schedule_strategy)">
+  The scheduling strategy for the inversion process. Valid options are: "minimum" or "fixed". If "minimum" is selected, the inversion will use the minimum number of GPUs required to run the inversion. If "fixed" is selected, the number of GPUs will be fixed to the value provided in the num_gpu parameter. Data Type: String.
+  </Accordion> 
+   <Accordion  title="Number of GPUs (num_gpu)">
+  The number of GPUs to be used on each line for the inversion if the schedule strategy is set to "fixed". Data Type: Positive Integer.
+  </Accordion>  
 </AccordionGroup>
 
 ### Data
 
 <AccordionGroup>
+  <Accordion  title="Data Epsilon (data_eps)">
+  The epsilon value for data processing in the inversion. Data Type: Positive Float.
+  </Accordion>
+  <Accordion  title="Data Standard Deviation (data_std)">
+  The standard deviation for data noise. Data Type: Positive Float.
+  </Accordion> 
+  <Accordion  title="Noise Threshold (noise_threshold)">
+  The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
+  </Accordion>  
   <Accordion  title="Inversion Time Channel Start (inversion_tc_start)">
   The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
   </Accordion>
   <Accordion  title="Inversion Time Channel End (inversion_tc_end)">
   The index of the last time channel to be used in the inversion. Data Type: Positive Integer.
   </Accordion>
-  <Accordion  title="Data Epsilon (data_eps)">
-  The epsilon value for data processing in the inversion. Data Type: Positive Float.
-  </Accordion>
-  <Accordion  title="Data Standard Deviation (data_std)">
-  The standard deviation for data noise. Data Type: Positive Float.
-  </Accordion>
 </AccordionGroup>
 
 ### Inversion Constants
 
 <AccordionGroup>
-  <Accordion  title="Noise Threshold (noise_threshold)">
-  The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
-  </Accordion>
   <Accordion  title="Optimizer (optimizer)">
   The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient). Data Type: String.
   </Accordion>

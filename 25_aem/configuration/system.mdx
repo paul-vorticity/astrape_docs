@@ -10,7 +10,7 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
 <Accordion title="Example System Configuration File:">
   ```yaml config_system.yaml
   deliverables: 
-    logo_file: "astrape.png"
+    logo_file: ""
     area_name: "Benchmark"
     project_id: "benchmark_1234"
 
@@ -20,6 +20,7 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
     tx_radius_m: 17.5
     tx_turns: 4
     ramp_on_rate: 3.0
+    max_current: 100.0
 
   data: 
     col_names: 
@@ -29,6 +30,7 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
       sfz: "SFz"
       line_column: "Line"
       topo_column: "DEM"
+  units: "pV/(Am^4)"
 
   waveform: 
     filepath: "waveform.csv"
@@ -43,6 +45,7 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
     sampling_col_name: "Middle"
     file_start_index: 14
     time_scale_s: 1.0e-3
+    offset_from_tx: [0.0,0.0,0.0]
   ```
 </Accordion>
 
@@ -51,14 +54,14 @@ The following sections describe the key components of the system configuration f
 ### Deliverables
 
 <AccordionGroup>
-  <Accordion  title="Logo File (logo_file)">
-  The filename (including extension) of the customer company logo image file within the data folder. This image will appear in the final reports. Data Type: Optional String.
+<Accordion  title="Logo File (logo_file)">
+(Optional) The filename (including extension) of the customer company logo image file within the data folder. This image will appear in the final reports. Data Type: Optional String.
 </Accordion>
 <Accordion  title="Area Name (area_name)">
-The name of the survey area for which the inversion is performed.  Data Type: Optional String.
+(Optional) The name of the survey area for which the inversion is performed.  Data Type: Optional String.
 </Accordion>
 <Accordion  title="Project ID (project_id)">
-The ID of the project for which the inversion is performed. Data Type: Optional String.
+(Optional) The ID of the project for which the inversion is performed. Data Type: Optional String.
 </Accordion>
 </AccordionGroup>
 
@@ -72,13 +75,16 @@ The radius of the transmitter loop in meters. This is used for the modelling of 
 The number of turns in the transmitter coil. This must be an integer and it is used for the modelling of the signal. Data Type: Positive Integer.
 </Accordion>
 <Accordion  title="Off Time (off_time_s)">
-(Optional) The off-time of the transmitter waveform in seconds. Defaults to 0.0059. Data Type: Positive Float.
+The off-time of the transmitter waveform in seconds. Defaults to 0.0059. Data Type: Positive Float.
 </Accordion>
 <Accordion  title="Peak Time (peak_time_s)">
-(Optional) The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
+The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
 </Accordion>
 <Accordion  title="Ramp-On Rate (ramp_on_rate)">
-(Optional) The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
+The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
+</Accordion>
+<Accordion  title="Maximum Current (max_current)">
+The maximum current of the transmitter waveform. This is only used to scale the data if the units are not in pV/(Am^4). Data Type: Positive Float.
 </Accordion>
 </AccordionGroup>
 
@@ -98,10 +104,13 @@ The name of the column within the data file that provides the EM transmitter-rec
 The prefix used within the data file to identify the column containing the derivative of the magnetic field in the z-direction. Data Type: String.
 </Accordion>
 <Accordion  title="Line Column (line_col)">
-(Optional) The name of the column within the data file that indicates the line of the sounding. Data Type: String.
+The name of the column within the data file that indicates the line of the sounding. Data Type: String.
 </Accordion>
 <Accordion  title="Topography Column (topo_col)">
-(Optional) The name of the column within the data file that provides the digital elevation model (DEM) of the sounding. Data Type: String.
+The name of the column within the data file that provides the digital elevation model (DEM) of the sounding. Data Type: String.
+</Accordion>
+<Accordion  title="Units (units)">
+The units of the data. The only valid option is "pV/(Am^4)" and "nT/s". Data Type: String.
 </Accordion>
 </AccordionGroup>
 
@@ -120,7 +129,7 @@ The name of the column within the data file that provides the current waveform d
 The name of the column within the data file that provides the time values for the current waveform data. Data Type: String.
 </Accordion>
 <Accordion  title="Filepath (filepath)">
-(Optional) The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
+The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
 </Accordion>
 </AccordionGroup>
 
@@ -144,5 +153,8 @@ The index of the first data point in the data file. Data Type: Positive Integer.
 </Accordion>
 <Accordion  title="Sampling Column Name (sampling_col_name)">
 The name of the column within the data file that provides the sampling times for the offtime data. Data Type: String.
+</Accordion>
+<Accordion title="Offset from Transmitter (offset_from_tx)">
+The offset from the transmitter in the x, y, and z directions. Data Type: List of Floats.
 </Accordion>
 </AccordionGroup>
