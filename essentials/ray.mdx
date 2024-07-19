@@ -4,34 +4,13 @@ description: In order to ensure our software is scalable and portable we have de
 icon: 'server'
 ---
 
-## Basic
+We have developed our algorithms using the [Ray](https://docs.ray.io/en/latest/index.html) library. A framework to build and scale Python applications easily.
 
-### Inline Code
+It is particularly well-suited for applications that require high performance on large clusters, allowing us to scale our software to handle large and complex inversions. Before running an inversion with Astrape you must start a Ray cluster. This can be done with the following command:
 
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
+```bash
+ray start --head
 ```
 
-### Code Block
-
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
-
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+Once a Ray cluster has been started the Ray dashboard can be accessed by connected to the correct IP address and port.
+This dashboard provides a real-time view of the cluster's status and resource usage, as well as a log output from the inversion process, allowing you to monitor the inversion as it progresses.
