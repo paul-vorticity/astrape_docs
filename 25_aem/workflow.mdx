@@ -8,3 +8,70 @@ The 2.5D AEM inversion workflow consists of three fundamental steps, each of whi
 <Frame caption="2.5D AEM Inversion Workflow" alt="2.5D AEM Inversion Workflow">
   <img src="/images/workflow.png" alt="2.5D AEM Inversion Workflow" />
 </Frame>
+
+```mermaid 
+
+graph TD
+    subgraph Inputs
+        Waveform[Waveform]
+        Offtime_Sampling[Offtime Sampling]
+        Data[Data]
+        System_Config[System Config]
+    end
+
+    subgraph Pre-Process
+        Transformed_Data[Transformed Data]
+        preprocess[preprocess]
+        job_submission[job_submission]
+        Discretization_Config[Discretization Config]
+        Survey_Config[Survey Config]
+        Inversion_Config[Inversion Config]
+    end
+
+    subgraph Inversion
+        Line1[Line 1]
+        Line2[Line 2]
+        Line3[Line 3]
+        Line4[Line 4]
+    end
+
+    subgraph Post-Process
+        planar_information[planar_information]
+        topography[topography]
+        sigma_values[sigma_values_iter_{}]
+    end
+
+    subgraph Outputs
+        Report[Report]
+        HTML[3D HTML Visualization]
+        Inversion_CSV[Inversion Model CSV]
+    end
+
+    Waveform --> Transformed_Data
+    Offtime_Sampling --> Transformed_Data
+    Data --> Transformed_Data
+    System_Config --> preprocess
+    preprocess --> Transformed_Data
+    preprocess --> Discretization_Config
+    preprocess --> Survey_Config
+    preprocess --> Inversion_Config
+    Transformed_Data --> job_submission
+    job_submission --> Line1
+    job_submission --> Line2
+    job_submission --> Line3
+    job_submission --> Line4
+    Line1 --> Line_Model1[Line Model]
+    Line2 --> Line_Model2[Line Model]
+    Line3 --> Line_Model3[Line Model]
+    Line4 --> Line_Model4[Line Model]
+    Line_Model1 --> postprocess[postprocess]
+    Line_Model2 --> postprocess
+    Line_Model3 --> postprocess
+    Line_Model4 --> postprocess
+    postprocess --> planar_information
+    postprocess --> topography
+    postprocess --> sigma_values
+    planar_information --> Report
+    topography --> HTML
+    sigma_values --> Inversion_CSV
+```
