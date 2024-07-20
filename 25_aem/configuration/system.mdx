@@ -23,6 +23,9 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
     max_current: 100.0
 
   data: 
+    data_file_name: "data.csv"
+    data_tc_end: 47
+    data_tc_start: 14    
     col_names: 
       xcol: "x"
       ycol: "y"
@@ -30,18 +33,16 @@ The configuration file is provided as a yaml file in the data subfolder. Please 
       sfz: "SFz"
       line_column: "Line"
       topo_column: "DEM"
-  units: "pV/(Am^4)"
+    units: "pV/(Am^4)"
 
   waveform: 
-    filepath: "waveform.csv"
+    waveform_file_name: "waveform.csv"
     type: "VTEM"
     current_col: "Tx_curr"
     time_col: "Time"
     
   receiver: 
-    data_tc_end: 47
-    data_tc_start: 14
-    sampling_filepath: "offtime_sampling.csv"
+    sampling_file_name: "offtime_sampling.csv"
     sampling_col_name: "Middle"
     file_start_index: 14
     time_scale_s: 1.0e-3
@@ -68,17 +69,17 @@ The following sections describe the key components of the system configuration f
 ### Transmitter
 
 <AccordionGroup>
-<Accordion  title="Radius (tx_radius_m)">
-The radius of the transmitter loop in meters. This is used for the modelling of the signal. Data Type: Positive Float.
-</Accordion>
-<Accordion  title="Turns (tx_turns)">
-The number of turns in the transmitter coil. This must be an integer and it is used for the modelling of the signal. Data Type: Positive Integer.
-</Accordion>
 <Accordion  title="Off Time (off_time_s)">
 The off-time of the transmitter waveform in seconds. Defaults to 0.0059. Data Type: Positive Float.
 </Accordion>
 <Accordion  title="Peak Time (peak_time_s)">
 The peak time of the transmitter waveform in seconds. Defaults to 0.00335. Data Type: Positive Float.
+</Accordion>
+<Accordion  title="Radius (tx_radius_m)">
+The radius of the transmitter loop in meters. This is used for the modelling of the signal. Data Type: Positive Float.
+</Accordion>
+<Accordion  title="Turns (tx_turns)">
+The number of turns in the transmitter coil. This must be an integer and it is used for the modelling of the signal. Data Type: Positive Integer.
 </Accordion>
 <Accordion  title="Ramp-On Rate (ramp_on_rate)">
 The ramp-on rate of the transmitter waveform. Defaults to 3.0. Data Type: Positive Float.
@@ -91,6 +92,15 @@ The maximum current of the transmitter waveform. This is only used to scale the 
 ### Data
 
 <AccordionGroup>
+<Accordion  title="Data File Name (data_file_name)">
+The filename (including extension) of the data file within the data folder. Data Type: String.
+</Accordion>
+<Accordion  title="Time Channel Start (data_tc_start)">
+The index of the first time channel in the data file for which data is available. Data Type: Positive Integer.
+</Accordion>
+<Accordion  title="Time Channel End (data_tc_end)">
+The index of the last time channel in the data file for which data is available. Data Type: Positive Integer (must be greater than or equal to data_tc_start).
+</Accordion>
 <Accordion  title="Easting Column (xcol)">
 The name of the column within the data file that provides the easting coordinates (in meters) of each sounding. Data Type: String.
 </Accordion>
@@ -117,6 +127,9 @@ The units of the data. The only valid option is "pV/(Am^4)" and "nT/s". Data Typ
 ### Waveform 
 
 <AccordionGroup>
+<Accordion  title="Waveform File Name (waveform_file_name)">
+The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
+</Accordion>
 <Accordion  title="Waveform Type (type)">
 The type of waveform used. Valid options are:
 * "VTEM"
@@ -128,31 +141,23 @@ The name of the column within the data file that provides the current waveform d
 <Accordion  title="Time Column Name (time_col)">
 The name of the column within the data file that provides the time values for the current waveform data. Data Type: String.
 </Accordion>
-<Accordion  title="Filepath (filepath)">
-The filename (including extension) of the waveform definition file within the data folder. If not provided, a default waveform will be used. Data Type: String.
-</Accordion>
+
 </AccordionGroup>
 
 ### Receiver
 
 <AccordionGroup>
-<Accordion  title="Time Channel Start (data_tc_start)">
-The index of the first time channel in the data file for which data is available. Data Type: Positive Integer.
-</Accordion>
-<Accordion  title="Time Channel End (data_tc_end)">
-The index of the last time channel in the data file for which data is available. Data Type: Positive Integer (must be greater than or equal to data_tc_start).
-</Accordion>
-<Accordion  title="Offtime Sampling Filepath (sampling_filepath)">
+<Accordion  title="Offtime Sampling File Name (sampling_file_name)">
 The filename (including extension) of the file within the data folder that contains the times of the offtime sampling. Data Type: String.
-</Accordion>
-<Accordion  title="Offtime Sampling Time Scale (time_scale_s)">
-The scale factor applied to the time values provided in the offtime_sampling file. Data Type: Positive Float (e.g., 1.0e-3 represents milliseconds).
-</Accordion>
-<Accordion  title="File Start Index (file_start_index)">
-The index of the first data point in the data file. Data Type: Positive Integer.
 </Accordion>
 <Accordion  title="Sampling Column Name (sampling_col_name)">
 The name of the column within the data file that provides the sampling times for the offtime data. Data Type: String.
+</Accordion><
+Accordion  title="File Start Index (file_start_index)">
+The index of the first data point in the data file. Data Type: Positive Integer.
+</Accordion>
+<Accordion  title="Offtime Sampling Time Scale (time_scale_s)">
+The scale factor applied to the time values provided in the offtime_sampling file. Data Type: Positive Float (e.g., 1.0e-3 represents milliseconds).
 </Accordion>
 <Accordion title="Offset from Transmitter (offset_from_tx)">
 The offset from the transmitter in the x, y, and z directions. Data Type: List of Floats.
