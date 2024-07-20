@@ -50,7 +50,6 @@
       "group": "Essentials",
       "pages": [
         "essentials/hardware",
-        "essentials/blits",
         "essentials/ray",
         "essentials/science"
       ]
