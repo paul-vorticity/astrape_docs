@@ -11,22 +11,16 @@ The `data` subfolder is crucial for organizing all the input files necessary for
   <Card title="Data File" icon="square-1">
     The main data file in CSV format. This file should contain all the necessary survey data including coordinates, measurements, and any other relevant attributes. The column names of the relevant data should be provided in the config_system.yaml. 
     <ul>
-      <li>Required File Name: `data.csv`</li>
       <li>Columns: `x`, `y`, `z`, `sFz[1]`, etc.</li>
     </ul>
   </Card>
   <Card title="Offtime Sampling File" icon="square-2">
     A CSV file containing the receiver sampling times. This is used to define the sampling intervals during the off-time of the waveform.
-    The 'middle' column indicates the middle of the sampling interval. The file name is passed as a parameter in the config_system.yaml. 
-    <ul>
-      <li>Example File Name: `offtime_sampling.csv`</li>
-    </ul>
+    <Info> The sampling file name and the column name should be provided in the config_system.yaml file.</Info>
   </Card>
   <Card title="Waveform File" icon="square-3">
-    A CSV file that defines the waveform from the source. The file name is passed as a parameter in the config_system file. 
-    <ul>
-      <li>Example File Name: `waveform.csv`</li>
-    </ul>
+    A CSV file that defines the waveform from the source. 
+    <Info> The waveform file name, type, and column names should be provided in the config_system.yaml file.</Info>
   </Card>
   
   <Card title="System Configuration" icon="square-4" href="/25_aem/configuration/system">
@@ -47,14 +41,14 @@ The `data` subfolder is crucial for organizing all the input files necessary for
     <ul>
       <li>Required File Name: `config_survey.yaml`</li>
     </ul>
-  <Tip> A survey configuration file is generated automatically during the preprocessing step. The default configuration will cover the entire survey area provided in the data file. However, you can modify it to adjust the survey parameters as needed.</Tip>
+  <Info> A survey configuration file is generated automatically during the preprocessing step. The default configuration will cover the entire survey area provided in the data file. However, you can modify it to adjust the survey parameters as needed.</Info>
   </Card>
   <Card title="Inversion Configuration" icon="square-7" href="/25_aem/configuration/inversion">
     The inversion configuration file that specifies the parameters and settings for the inversion process, including algorithm settings and initial models.
     <ul>
       <li>Required File Name: `config_inversion.yaml`</li>
     </ul>
-    <Tip> A default inversion configuration file is generated automatically during the preprocessing step. The default configuration will be based on the provided data and system parameters. It is recommended that you modify it to adjust the inversion parameters as needed.</Tip>
+    <Info> A default inversion configuration file is generated automatically during the preprocessing step. The default configuration will be based on the provided data and system parameters. It is recommended that you modify it to adjust the inversion parameters as needed.</Info>
   </Card>
   <Card title="Logo Image (optional)" icon="square-8">
     An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder and the correct path should be passed in the config_system.yaml if you would like the logo to appear on the reports. 
