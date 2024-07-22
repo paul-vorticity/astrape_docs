@@ -1,69 +1,59 @@
 ---
 title: 'Step-by-Step Guide'
-description: 'Follow along our step-by-step guide to perform your first inversion with Astrape.'
+description: 'Follow our step-by-step guide to perform your first inversion with Astrape.'
 ---
 
 <Steps>
   <Step title="Start Ray">
-    The first step is to setup a ray head node. This can be done with the following command: 
+    Set up a Ray head node with the following command: 
     ```
     ray start --head
     ```
-    If you would like to attach any other nodes to this cluster you can run the following command on that server: 
+    To attach additional nodes to this cluster, run the following command on those servers:
     ```
-     ray start --address='172.17.9.10:6379'
+    ray start --address='IP_ADDRESS:6379'
     ```
-    <Warning>You must replace the IP address with the one displayed from the output of the ray sart --head command.</Warning>
+    <Warning>Replace 'IP_ADDRESS' with the one displayed from the output of the `ray start --head` command.</Warning>
   </Step>
-  <Step title="Setup Folder Structure">
-    The second step is to create a folder in which our inversion will be performed. Please see the survey folder structure [page](/25_aem/structure) for more details. 
-    This folder must contain a subfolder named 'data' which contains the inputs for our inversion workflow. 
-    Please see the data subfolder [page](/25_aem/data_subfolder) for more details. 
+
+  <Step title="Set Up Folder Structure">
+    Create a folder for the inversion, including a subfolder named 'data' for input files. See the [survey folder structure page](/25_aem/structure) and the [data subfolder page](/25_aem/data_subfolder) for more details.
     <Tip>Ensure all necessary files are correctly placed in the `data` subfolder to avoid issues during the inversion process.</Tip>
   </Step>
+
   <Step title="Prepare System Configuration File">
-    After setting up our inversion folder, the next step is to prepare the system configuration file. This file defines how we read the data and the specifications of the airborne EM system. 
-    Refer to the system configuration [page](/25_aem/configuration/system) for more details. 
+    Prepare the system configuration file, which defines how to read the data and specifies the airborne EM system. Refer to the [system configuration page](/25_aem/configuration/system) for details.
   </Step>
-  <Step title="Preprocessing ">
-    The preprocessing setup performs many crucial functions for the inversion process, including system configuration validation, default configuration files generation and data validation/preparation. The preprocessing can be done with the following command:
-    ```
-    astrape_25d preprocess /home/path_to_survey_folder
-    ```
 
-    <Info>
-    Please ensure to replace the 'path_to_survey_folder' with the correct path. 
-    </Info>
-    <Warning>Running the preprocessing script with incorrect paths or data can lead to errors. Verify your paths and data files before running the script.</Warning>
+  <Step title="Preprocessing">
+    Perform preprocessing, which includes system configuration validation, default configuration file generation, and data validation/preparation, with the command:
+    ```
+    astrape_25d preprocess /path_to_survey_folder
+    ```
+    <Warning>Ensure the 'path_to_survey_folder' is correct. Incorrect paths or data can lead to errors.</Warning>
+    <Check>The preprocessing step generates 'inversion_data.csv' to ensure the original data remains unmodified.</Check>
+  </Step>
 
-    <Check>During the preprocessing step, the code will generate a csv file called 'inversion_data.csv' which contain the data that will be used for the inversion. This ensures that the original data is not modified.</Check>
+  <Step title="Modify Configuration Files">
+    Review and modify the default survey and inversion configuration files generated during preprocessing. Refer to the [survey configuration page](/25_aem/configuration/survey) and the [inversion configuration page](/25_aem/configuration/inversion) for details.
   </Step>
-  <Step title="Modify Survey + Inversion Configuration Files">
-    During preprocessing the code will generate default survey and inversion configuration files. It is important to review these files and modify them as needed.
-    Refer to the [survey configuration page](/25_aem/configuration/survey) and the [inversion configuration page](/25_aem/configuration/inversion) for more details.
-  </Step>
+
   <Step title="Run Inversion">
-    Now we are ready to run the inversion! This can be done with the following command: 
+    Run the inversion with the command:
     ```
-    astrape_25d run /home/path_to_survey_folder
+    astrape_25d run /path_to_survey_folder
     ```
-    <Warning>Depending on the number of survey lines, inversion parameters, and your hardware, the inversion process can take a significant amount of time. Please see our benchmarks for more details.</Warning> 
-
-    During the inversion process, you can monitor the progress by checking the `inversion` folder. This folder contains all the intermediate data generated during the inversion process. Each inversion run which you create will generate a new timestamped subfolder.
-    <Info>
-    You can also monitor the progress by checking the `ray` dashboard. Please see our ray explainer for more details on how to access the dashboard.
-    </Info>
+    <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. See our benchmarks for more details.</Warning>
+    Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our Ray explainer for accessing the dashboard.
   </Step>
-    <Step title="Postprocessing">
-    After the inversion has been completed, you can perform postprocessing to generate the final deliverables. This can be done with the following command: 
-    ```
-    astrape_25d postprocess /home/path_to_experiment_folder
-    ```
-    <Info>
-    Please ensure to replace the 'path_to_experiment_folder' with the correct path. This is the path to the timestamped folder within the 'inversion' folder that corresponds to the inversion run you would like to postprocess.
-    </Info>
-    Once the postprocessing has been completed, you can view the outputs in the `deliverables` folder. This folder contains all the final results, including reports and visualizations.
-    <Check>Check the `deliverables` folder for the comprehensive [PDF report](/25_aem/outputs/report), [data files](/25_aem/outputs/data) and [visualizations](/25_aem/outputs/visualization) to analyze your inversion results.</Check>
 
+  <Step title="Postprocessing">
+    After the inversion, perform postprocessing to generate final deliverables with the command:
+    ```
+    astrape_25d postprocess /path_to_experiment_folder
+    ```
+    <Info>Ensure the 'path_to_experiment_folder' is correct, pointing to the timestamped folder in the 'inversion' folder for the desired run.</Info>
+    Check the `deliverables` folder for the final results, including reports and visualizations.
+    <Check>Review the [PDF report](/25_aem/outputs/report), [data files](/25_aem/outputs/data), and [visualizations](/25_aem/outputs/visualization) in the `deliverables` folder to analyze your inversion results.</Check>
   </Step>
 </Steps>
