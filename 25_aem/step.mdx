@@ -58,13 +58,11 @@ description: 'Follow along our step-by-step guide to perform your first inversio
     astrape_25d run /home/path_to_survey_folder
     ```
     <Warning>Depending on the number of survey lines, inversion parameters, and your hardware, the inversion process can take a significant amount of time. Please see our benchmarks for more details.</Warning> 
-  </Step>
-  <Step title="Monitor Progress">
-  During the inversion process, you can monitor the progress by checking the `inversion` folder. This folder contains all the intermediate data generated during the inversion process. Each inversion run which you create will generate a new timestamped subfolder.
 
-  <Info>
-  You can also monitor the progress by checking the `ray` dashboard. Please see our ray explainer for more details on how to access the dashboard.
-  </Info>
+    During the inversion process, you can monitor the progress by checking the `inversion` folder. This folder contains all the intermediate data generated during the inversion process. Each inversion run which you create will generate a new timestamped subfolder.
+    <Info>
+    You can also monitor the progress by checking the `ray` dashboard. Please see our ray explainer for more details on how to access the dashboard.
+    </Info>
   </Step>
     <Step title="Postprocessing">
     After the inversion has been completed, you can perform postprocessing to generate the final deliverables.
@@ -76,10 +74,7 @@ description: 'Follow along our step-by-step guide to perform your first inversio
     <Info>
     Please ensure to replace the 'path_to_experiment_folder' with the correct path. This is the path to the timestamped folder within the 'inversion' folder that corresponds to the inversion run you would like to postprocess.
     </Info>
-  </Step>
-  <Step title="Inspect Deliverables">
-    Once the inversion has been completed, you can view the outputs in the `deliverables` folder. 
-    This folder contains all the final results, including reports and visualizations.
+    Once the postprocessing has been completed, you can view the outputs in the `deliverables` folder. This folder contains all the final results, including reports and visualizations.
     <Check>Check the `deliverables` folder for the comprehensive [PDF report](/25_aem/outputs/report), [data files](/25_aem/outputs/data) and [visualizations](/25_aem/outputs/visualization) to analyze your inversion results.</Check>
 
   </Step>
