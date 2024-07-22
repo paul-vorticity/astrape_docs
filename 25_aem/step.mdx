@@ -31,7 +31,6 @@ description: 'Follow our step-by-step guide to perform your first inversion with
     astrape_25d preprocess /path_to_survey_folder
     ```
     <Warning>Ensure the 'path_to_survey_folder' is correct. Incorrect paths or data can lead to errors.</Warning>
-    <Check>The preprocessing step generates 'inversion_data.csv' to ensure the original data remains unmodified.</Check>
   </Step>
 
   <Step title="Modify Configuration Files">
@@ -43,8 +42,8 @@ description: 'Follow our step-by-step guide to perform your first inversion with
     ```
     astrape_25d run /path_to_survey_folder
     ```
-    <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. See our benchmarks for more details.</Warning>
-    Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our Ray explainer for accessing the dashboard.
+    <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. </Warning>
+    Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](essentials/ray) for accessing the dashboard.
   </Step>
 
   <Step title="Postprocessing">
@@ -52,7 +51,6 @@ description: 'Follow our step-by-step guide to perform your first inversion with
     ```
     astrape_25d postprocess /path_to_experiment_folder
     ```
-    <Info>Ensure the 'path_to_experiment_folder' is correct, pointing to the timestamped folder in the 'inversion' folder for the desired run.</Info>
     Check the `deliverables` folder for the final results, including reports and visualizations.
     <Check>Review the [PDF report](/25_aem/outputs/report), [data files](/25_aem/outputs/data), and [visualizations](/25_aem/outputs/visualization) in the `deliverables` folder to analyze your inversion results.</Check>
   </Step>
