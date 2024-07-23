@@ -4,17 +4,12 @@ title: 'Inversion Configuration'
 
 ---
 
+The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
+
 <Tip>
 A default configuration file will be generated during the preprocessing step. The inversion provided in the default configuration file is based upon the provided data and other parameters provided in the system configuration file. 
 After the preprocessing step, the user can modify the configuration file to adjust the inversion parameters as they see fit.
 </Tip>
-
-
-The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
-
-<Warning>
-Make sure to adjust the GPU memory in the configuration file based on the available memory on your system. Insufficient memory can lead to errors during the inversion process.
-</Warning>
 
 Please see the following example: 
 
@@ -69,6 +64,9 @@ Please see the following example:
   ```
 </Accordion>
 
+<Warning>
+Make sure to adjust the GPU memory in the configuration file based on the available memory on your system. Insufficient memory can lead to errors during the inversion process.
+</Warning>
 
 The following sections describe the key components of the inversion configuration file and their respective parameters:
 
@@ -76,7 +74,7 @@ The following sections describe the key components of the inversion configuratio
 
 <AccordionGroup>
   <Accordion  title="Experiment Name (name)">
-  The name of the experiment is "benchmark". This will be used in the name of the inversion folder. Data Type: String.
+  This will be used in the name of the inversion folder and can be used to track different inversion runs. Data Type: String.
   <Warning> The experiment name should not contain any spaces, otherwise, the inversion process may fail. </Warning>
   </Accordion>
   <Accordion  title="GPU Memory (gpu_memory)">
@@ -100,13 +98,21 @@ The following sections describe the key components of the inversion configuratio
 
 <AccordionGroup>
   <Accordion  title="Data Epsilon (data_eps)">
-  The epsilon value for data processing in the inversion. Data Type: Positive Float.
+  The uncertainty floor in the weighting function. Each data point will be given a weighting according to the following formula: 
+
+  $$\frac{1}{\sqrt{data\_eps + data\_std \times \|data\|}}$$
+  
+  Data Type: Positive Float.
   </Accordion>
   <Accordion  title="Data Standard Deviation (data_std)">
-  The standard deviation for data noise. Data Type: Positive Float.
+  Uncertainty fractional percentage. Each data point will be given a weighting according to the following formula: 
+
+  $$\frac{1}{\sqrt{data\_eps + data\_std \times \|data\|}}$$
+  
+  Data Type: Positive Float.
   </Accordion> 
   <Accordion  title="Noise Threshold (noise_threshold)">
-  The noise threshold value for the inversion process. Any data which is below this value will be masked and not contribute to the loss and gradients for the full global mesh. Data Type: Positive Float.
+  The noise threshold value for the inversion process. Any observed data point which is below this value will be given a weighting of 0, and will therefore not contribute to the inversion process. Data Type: Positive Float.
   </Accordion>  
   <Accordion  title="Inversion Time Channel Start (inversion_tc_start)">
   The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
@@ -120,7 +126,7 @@ The following sections describe the key components of the inversion configuratio
 
 <AccordionGroup>
   <Accordion  title="Optimizer (optimizer)">
-  The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient). Data Type: String.
+  The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient) and "IGN" (Inexact Gauss-Newton). Data Type: String.
   </Accordion>
   <Accordion  title="Optimizer Constants (optimizer_constants)">
   Constants for the optimizer, including:
@@ -128,19 +134,21 @@ The following sections describe the key components of the inversion configuratio
   * LSshorten: Line search shortening factor. Data Type: Positive Float.
   * maxIterLS: Maximum number of line search iterations. Data Type: Positive Integer.
   </Accordion>
-  <Accordion  title="Beta Schedule (BetaSchedule)">
-  Settings for the beta schedule, including:
-  * coolingFactor: Cooling factor for the beta schedule. Data Type: Non-negative Float.
-  * coolingRate: Cooling rate for the beta schedule. Data Type: Non-negative Integer.
+  <Accordion  title="Beta Schedule (beta_schedule)">
+  Settings for the beta schedule. The Beta schedule is used to control the trade-off between the data misfit and the model norm.
+  
+  For example, if the cooling rate is 3 and the cooling factor is 2, then the beta value will be divided by 2 every 3 iterations. Data Type: Positive Float.
+  * cooling_factor: Cooling factor for the beta schedule. Data Type: Non-negative Float.
+  * cooling_rate: Cooling rate for the beta schedule. Data Type: Non-negative Integer.
   </Accordion>
   <Accordion  title="Beta (beta)">
   The beta value for the inversion process. Data Type: Positive Float.
   </Accordion>
   <Accordion  title="Alphas (alphas)">
   Alpha values for the inversion, including:
-  * alpha_s: Alpha value for smoothness is 0.0025. Data Type: Non-negative Float.
-  * alpha_x: Alpha value for x-direction is 100.0. Data Type: Non-negative Float.
-  * alpha_y: Alpha value for y-direction is 100.0. Data Type: Non-negative Float.
+  * alpha_s: Alpha value for smoothness. Data Type: Non-negative Float.
+  * alpha_x: Alpha value for x-direction. Data Type: Non-negative Float.
+  * alpha_y: Alpha value for y-direction. Data Type: Non-negative Float.
   </Accordion>
   <Accordion  title="Weighting Flag (weighting_flag)">
   Whether to apply any depth weighting in the inversion. Data Type: Boolean.
@@ -154,13 +162,13 @@ The following sections describe the key components of the inversion configuratio
   * limit_weight_max: Maximum weight limit. Data Type: Non-negative Float.
   </Accordion>
   <Accordion  title="Upper Bound Flag (upper_bound_flag)">
-  Whether to apply an upper bound in the inversion. Data Type: Boolean.
+  Whether to apply an upper bound in the inversion applied on the conductivity values. Data Type: Boolean.
   </Accordion>
   <Accordion  title="Upper Bound Value (upper_bound_value)">
-  The upper bound value for the inversion. Data Type: Positive Float.
+  The upper bound value for the inversion. The units of this value are in Log10(mS/m). Data Type: Positive Float.
   </Accordion>
   <Accordion  title="Regularization Sparse (reg_sparse)">
-  Whether to apply sparse regularization. Data Type: Boolean.
+  Whether to apply sparse norm regularization. Data Type: Boolean.
   </Accordion>
 </AccordionGroup>
 
