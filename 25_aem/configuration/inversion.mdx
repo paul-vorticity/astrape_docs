@@ -1,15 +1,12 @@
----
-title: 'Inversion Configuration'
----
+# Inversion Configuration
 
 The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
 
 <Tip>
-A default configuration file will be generated during the preprocessing step. The inversion provided in the default configuration file is based upon the provided data and other parameters provided in the system configuration file. 
-After the preprocessing step, the user can modify the configuration file to adjust the inversion parameters as they see fit.
+A default configuration file is generated during the preprocessing step. This file is based on the provided data and parameters from the system configuration file. After preprocessing, you can modify the configuration file to adjust the inversion parameters as needed.
 </Tip>
 
-Please see the following example: 
+## Example Inversion Configuration File:
 
 <Accordion title="Example Inversion Configuration File:">
   ```yaml config_inversion.yaml
@@ -58,114 +55,111 @@ Please see the following example:
     init_model_path: null
     init_directory_path: null
     init_model_scale: null
-
   ```
 </Accordion>
 
 <Warning>
-Make sure to adjust the GPU memory in the configuration file based on the available memory on your system. Insufficient memory can lead to errors during the inversion process.
+Adjust the GPU memory in the configuration file based on your system's available memory. Insufficient memory can lead to errors during the inversion process.
 </Warning>
 
-The following sections describe the key components of the inversion configuration file and their respective parameters:
+## Key Components of the Inversion Configuration File
 
 ### Experiment
 
 <AccordionGroup>
-  <Accordion  title="Experiment Name (name)">
-  This will be used in the name of the inversion folder and can be used to track different inversion runs. Data Type: String.
-  <Warning> The experiment name should not contain any spaces, otherwise, the inversion process may fail. </Warning>
+  <Accordion title="Experiment Name (name)">
+  This is used in the name of the inversion folder and to track different inversion runs. Data Type: String.
+  <Warning> The experiment name should not contain spaces to avoid inversion process failures. </Warning>
   </Accordion>
-  <Accordion  title="GPU Memory (gpu_memory)">
-  The amount of gib of memory available on the type of GPU being used. Data Type: Positive Float.
+  <Accordion title="GPU Memory (gpu_memory)">
+  The amount of GPU memory. Data Type: Positive Float.
   </Accordion>
-  <Accordion  title="Source Dx (source_dx)">
-  The source dx value in meters. This is the distance between source-receiver pairs that will be sampled and used from the data. Data Type: Positive Float.
+  <Accordion title="Source Dx (source_dx)">
+  The distance between source-receiver pairs sampled from the data, in meters. Data Type: Positive Float.
   </Accordion>  
-  <Accordion  title="Use Topography (use_topo)">
-  Whether to use the topography in the inversion. If this is True the earth will not be approximated to have a flat surface at z=0. Data Type: Boolean.
+  <Accordion title="Use Topography (use_topo)">
+  Whether to use topography in the inversion. If True, the earth is not approximated to have a flat surface at z=0. Data Type: Boolean.
   </Accordion>  
-  <Accordion  title="Schedule Strategy (schedule_strategy)">
-  The scheduling strategy for the inversion process. Valid options are: "minimum" or "fixed". If "minimum" is selected, the inversion will use the minimum number of GPUs required to run the inversion. If "fixed" is selected, the number of GPUs will be fixed to the value provided in the num_gpu parameter. Data Type: String.
+  <Accordion title="Schedule Strategy (schedule_strategy)">
+  The scheduling strategy for the inversion process. Options are: "minimum" (uses the minimum number of GPUs required) or "fixed" (uses the number of GPUs specified in the num_gpu parameter). Data Type: String.
   </Accordion> 
-   <Accordion  title="Number of GPUs (num_gpu)">
-  The number of GPUs to be used on each line for the inversion if the schedule strategy is set to "fixed". Data Type: Positive Integer.
+  <Accordion title="Number of GPUs (num_gpu)">
+  The number of GPUs to use for the inversion when the schedule strategy is set to "fixed". Data Type: Positive Integer.
   </Accordion>  
 </AccordionGroup>
 
 ### Data
 
 <AccordionGroup>
-  <Accordion  title="Data Epsilon (data_eps)">
-  The uncertainty floor in the weighting function. Each data point will be given a weighting according to the following formula: 
+  <Accordion title="Data Epsilon (data_eps)">
+  The uncertainty floor in the weighting function, given by the formula: 
 
   $$\frac{1}{data\_eps + data\_std \times \|data\|}$$
   
   Data Type: Positive Float.
   </Accordion>
-  <Accordion  title="Data Standard Deviation (data_std)">
-  Uncertainty fractional percentage. Each data point will be given a weighting according to the following formula: 
+  <Accordion title="Data Standard Deviation (data_std)">
+  Uncertainty fractional percentage, given by the formula: 
 
   $$\frac{1}{data\_eps + data\_std \times \|data\|}$$
   
   Data Type: Positive Float.
   </Accordion> 
-  <Accordion  title="Noise Threshold (noise_threshold)">
-  The noise threshold value for the inversion process. Any observed data point which is below this value will be given a weighting of 0, and will therefore not contribute to the inversion process. Data Type: Positive Float.
+  <Accordion title="Noise Threshold (noise_threshold)">
+  The noise threshold value. Data points below this value will have a weighting of 0 and will not contribute to the inversion. Data Type: Positive Float.
   </Accordion>  
-  <Accordion  title="Inversion Time Channel Start (inversion_tc_start)">
-  The index of the first time channel to be used in the inversion. Data Type: Positive Integer.
+  <Accordion title="Inversion Time Channel Start (inversion_tc_start)">
+  The index of the first time channel used in the inversion. Data Type: Positive Integer.
   </Accordion>
-  <Accordion  title="Inversion Time Channel End (inversion_tc_end)">
-  The index of the last time channel to be used in the inversion. Data Type: Positive Integer.
+  <Accordion title="Inversion Time Channel End (inversion_tc_end)">
+  The index of the last time channel used in the inversion. Data Type: Positive Integer.
   </Accordion>
 </AccordionGroup>
 
 ### Inversion Constants
 
 <AccordionGroup>
-  <Accordion  title="Optimizer (optimizer)">
-  The optimizer to be used for the inversion. Valid options are: "PGNCG" (Projected Gauss-Newton Conjugate Gradient) and "IGN" (Inexact Gauss-Newton). Data Type: String.
+  <Accordion title="Optimizer (optimizer)">
+  The optimizer used for the inversion. Options: "PGNCG" (Projected Gauss-Newton Conjugate Gradient) and "IGN" (Inexact Gauss-Newton). Data Type: String.
   </Accordion>
-  <Accordion  title="Optimizer Constants (optimizer_constants)">
-  Constants for the optimizer, including:
-  * maxIter: Maximum number of iterations is set to 1. Data Type: Positive Integer.
+  <Accordion title="Optimizer Constants (optimizer_constants)">
+  Constants for the optimizer:
+  * maxIter: Maximum number of iterations. Data Type: Positive Integer.
   * LSshorten: Line search shortening factor. Data Type: Positive Float.
   * maxIterLS: Maximum number of line search iterations. Data Type: Positive Integer.
   </Accordion>
-  <Accordion  title="Beta Schedule (beta_schedule)">
-  Settings for the beta schedule. The Beta schedule is used to control the trade-off between the data misfit and the model norm.
-  
-  For example, if the cooling rate is 3 and the cooling factor is 2, then the beta value will be divided by 2 every 3 iterations. Data Type: Positive Float.
-  * cooling_factor: Cooling factor for the beta schedule. Data Type: Non-negative Float.
-  * cooling_rate: Cooling rate for the beta schedule. Data Type: Non-negative Integer.
+  <Accordion title="Beta Schedule (beta_schedule)">
+  Settings for the beta schedule, controlling the trade-off between data misfit and model regularization. For example, if the cooling rate is 3 and the cooling factor is 2, the beta value is divided by 2 every 3 iterations. 
+  * cooling_factor: Cooling factor. Data Type: Non-negative Float.
+  * cooling_rate: Cooling rate. Data Type: Non-negative Integer.
   </Accordion>
-  <Accordion  title="Beta (beta)">
+  <Accordion title="Beta (beta)">
   The beta value for the inversion process. Data Type: Positive Float.
   </Accordion>
-  <Accordion  title="Alphas (alphas)">
-  Alpha values for the inversion, including:
-  * alpha_s: Alpha value for smoothness. Data Type: Non-negative Float.
-  * alpha_x: Alpha value for x-direction. Data Type: Non-negative Float.
-  * alpha_y: Alpha value for y-direction. Data Type: Non-negative Float.
+  <Accordion title="Alphas (alphas)">
+  Alpha values for the inversion:
+  * alpha_s: Smoothness. Data Type: Non-negative Float.
+  * alpha_x: X-direction. Data Type: Non-negative Float.
+  * alpha_y: Y-direction. Data Type: Non-negative Float.
   </Accordion>
-  <Accordion  title="Weighting Flag (weighting_flag)">
-  Whether to apply any depth weighting in the inversion. Data Type: Boolean.
+  <Accordion title="Weighting Flag (weighting_flag)">
+  Whether to apply depth weighting in the inversion. Data Type: Boolean.
   </Accordion>
-  <Accordion  title="Weighting Constants (weighting_constants)">
-  Constants for the weighting, including:
-  * type: Type of weighting. Data Type: String.
-  * alpha: Alpha value for weighting. Data Type: Non-negative Float.
+  <Accordion title="Weighting Constants (weighting_constants)">
+  Constants for the weighting:
+  * type: Weighting type. Data Type: String.
+  * alpha: Weighting alpha value. Data Type: Non-negative Float.
   * penetration_limit_start: Start value for penetration limit. Data Type: Non-negative Float.
   * penetration_limit_end: End value for penetration limit. Data Type: Non-negative Float.
   * limit_weight_max: Maximum weight limit. Data Type: Non-negative Float.
   </Accordion>
-  <Accordion  title="Upper Bound Flag (upper_bound_flag)">
-  Whether to apply an upper bound in the inversion applied on the conductivity values. Data Type: Boolean.
+  <Accordion title="Upper Bound Flag (upper_bound_flag)">
+  Whether to apply an upper bound on conductivity values. Data Type: Boolean.
   </Accordion>
-  <Accordion  title="Upper Bound Value (upper_bound_value)">
-  The upper bound value for the inversion. The units of this value are in Log10(mS/m). Data Type: Positive Float.
+  <Accordion title="Upper Bound Value (upper_bound_value)">
+  The upper bound value in Log10(mS/m). Data Type: Positive Float.
   </Accordion>
-  <Accordion  title="Regularization Sparse (reg_sparse)">
+  <Accordion title="Regularization Sparse (reg_sparse)">
   Whether to apply sparse norm regularization. Data Type: Boolean.
   </Accordion>
 </AccordionGroup>
@@ -173,27 +167,27 @@ The following sections describe the key components of the inversion configuratio
 ### Initial Model
 
 <AccordionGroup>
-  <Accordion  title="Load Initial Model (load_init_model)">
+  <Accordion title="Load Initial Model (load_init_model)">
   Whether to load an initial model. Data Type: Boolean.
   </Accordion>
-  <Accordion  title="Initial Model Path (init_model_path)">
+  <Accordion title="Initial Model Path (init_model_path)">
   The path to the initial model file. Data Type: String.
   </Accordion>
-  <Accordion  title="Initial Directory Path (init_directory_path)">
+  <Accordion title="Initial Directory Path (init_directory_path)">
   The path to the directory containing initial model files. Data Type: String.
   </Accordion>
-  <Accordion  title="Initial Model Scale (init_model_scale)">
-  The scale of the initial model. Valid options are: "linear", "log". Data Type: String.
+  <Accordion title="Initial Model Scale (init_model_scale)">
+  The scale of the initial model. Options: "linear", "log". Data Type: String.
   </Accordion>
 </AccordionGroup>
 
 ### Sigmas
 
 <AccordionGroup>
-  <Accordion  title="Sigma Background (sigma_background)">
+  <Accordion title="Sigma Background (sigma_background)">
   The background conductivity value. Data Type: Positive Float.
   </Accordion>
-  <Accordion  title="Sigma Air (sigma_air)">
+  <Accordion title="Sigma Air (sigma_air)">
   The air conductivity value. Data Type: Positive Float.
   </Accordion>
 </AccordionGroup>
