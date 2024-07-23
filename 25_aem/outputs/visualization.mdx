@@ -1,18 +1,19 @@
 ---
+
 title: 'Visualization'
-description: 'The visualization outputs provide a comprehensive view of the inversion results, allowing you to analyze the subsurface conductivity distribution and the evolution of the model over the iterations.'
+description: 'The visualization outputs provide a comprehensive view of the inversion results, enabling you to analyze the subsurface conductivity distribution and the evolution of the model over multiple iterations.'
+
 ---
 
-The key visualization outputs include:
+### Key Visualization Outputs
 
-- **HTML Isosurface Plots**: Interactive HTML files showing isosurfaces of the conductivity values.
-  - The isosurfaces are generated at different conductivity levels and provide a 3D representation of the subsurface conductivity distribution.
-  - Each HTML file corresponds to a different isovalue and can be viewed by simply openning the file in a web browser.
+- **HTML Isosurface Plots**: Interactive HTML files displaying isosurfaces of the conductivity values.
+  - These isosurfaces, generated at varying conductivity levels, offer a 3D representation of the subsurface conductivity distribution.
+  - Each HTML file corresponds to a specific isovalue and can be viewed by simply opening it in a web browser.
   <Warning>
-  The isosuface plots and inteded to be used as a first look at all the lines that were inverted together in one run, but they are not a substitute for a detailed analysis.
-  For a more detailed analysis, please import the data into a geophysical interpretation software and perform a full kriging interpolation. Please see the [data outputs](/25_aem/outputs/data) for more details.
+  The isosurface plots are intended for an initial overview of all the lines inverted together in one run. They are not a substitute for a detailed analysis.
+  For a comprehensive analysis, import the data into a geophysical interpretation software and perform a full kriging interpolation. Refer to the [data outputs](/25_aem/outputs/data) for more details.
   </Warning>
 
-- **Inversion Iteration GIFs**: An animated GIF showing the evolution of the conductivity values over the iterations of the inversion process.
-  - Inside the "iteration_gifs" folder, you will find GIFs showing the model evolution for each line which was inverted as part of that run.
-
+- **Inversion Iteration GIFs**: Animated GIFs showcasing the evolution of conductivity values throughout the inversion process.
+  - Located in the "iteration_gifs" folder, these GIFs depict the model evolution for each line that was inverted in the run.
