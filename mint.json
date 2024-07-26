@@ -91,7 +91,8 @@
       "pages": [
         "25_aem/outputs/data",
         "25_aem/outputs/report",
-        "25_aem/outputs/visualization"
+        "25_aem/outputs/visualization",
+        "25_aem/outputs/kriging"
       ]
     }
   ],
