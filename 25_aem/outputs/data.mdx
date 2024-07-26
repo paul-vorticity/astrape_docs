@@ -26,5 +26,34 @@ The data is saved in the `deliverables` directory. The key files generated are:
   </Tab>
   <Tab title="astrape_extended_data.xyz">
     Contains the same data as `astrape_extended_data.csv` but in Geosoft XYZ format. This file can be easily opened and viewed within the Oasis Montaj software by importing it into a Geosoft database file (gdb). Please see [here](https://help.seequent.com/Oasismontaj/2023.2/Content/gxhelp/i/import_gx.htm) for instructions on how to import the data.
+  
+  ## How to Convert 2.5D Data to 3D Model 
+
+  Once the inversion model has been imported as a GDB file in Oasis Montaj, you can convert the 2.5D data to a 3D model by performing a [3D Kriging](https://help.seequent.com/Oasismontaj/2023.1/Content/gxhelp/v/geosoft_gx_voxutils_voxelkriging.htm). 
+
+  The kriging functionality in Oasis Montaj can be found under the `Voxel` tab: 
+
+  <Frame caption="Voxel Kriging Location in Oasis Montaj">
+    <img src="/images/kriging.png" alt="Voxel Kriging Location in Oasis Montaj" />
+  </Frame>
+  
+  The choice of kriging parameters can have a significant impact on the final 3D model. It is recommended to consult with a geophysicist or geostatistician to determine the best parameters for your specific dataset. 
+  
+  We recommend performing the kriging on the "Log10_Conductivity_mSm" column. 
+  
+  Ensure that the blanking distance is large enough to cover the distance between the survey lines (for example if your survey lines are 100m apart, and you are performing a kriging using a cell size of 10m, ensure the blanking distance is >= 10). 
+
+  Finally, the strike, dip and plunge parameters of the kriging should be selected based on the geological context of the survey area. It is common to set the strike angle to be perpendicular to the survey lines and the strike weight to be 2.0, this will ensure that the kriging is biased in the direction perpendicular to the survey lines.
+
+  <Frame caption="Kriging Parameters">
+    <img src="/images/kriging_parameters.png" alt="Kriging Parameters" />
+  </Frame>
+
+  Make sure to consult the Oasis Montaj [3D Kriging](https://help.seequent.com/Oasismontaj/2023.1/Content/gxhelp/v/geosoft_gx_voxutils_voxelkriging.htm) documentation for more information on the kriging parameters and how to interpret the results.
+
+
+
+
+
   </Tab>
 </Tabs>
