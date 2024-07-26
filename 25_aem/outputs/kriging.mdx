@@ -3,28 +3,28 @@ title: Kriging
 description: 'Converting 2.5D data to a 3D model using kriging in Oasis Montaj'
 ---
 
-  During postprocessing, a file called `astrape_extended_data.xyz` is generated. We can use this file to convert the 2.5D data to a 3D model using kriging in Oasis Montaj.
-  
-  This file can be easily opened and viewed within the Oasis Montaj software by importing it into a Geosoft database file (GDB). Please see [this guide](https://help.seequent.com/Oasismontaj/2023.2/Content/gxhelp/i/import_gx.htm) for instructions on how to import the data.
+    During post-processing, a file called `astrape_extended_data.xyz` is generated. This file can be used to convert 2.5D data into a 3D model using kriging in Oasis Montaj.
 
-  Once the inversion model has been imported as a GDB file in Oasis Montaj, you can convert the 2.5D data to a 3D model by performing a [3D Kriging](https://help.seequent.com/Oasismontaj/2023.1/Content/gxhelp/v/geosoft_gx_voxutils_voxelkriging.htm). The kriging functionality in Oasis Montaj can be found under the `Voxel` tab:
+    To open and view this file in Oasis Montaj, you need to import it into a Geosoft database file (GDB). Please refer to [this guide](https://help.seequent.com/Oasismontaj/2023.2/Content/gxhelp/i/import_gx.htm) for detailed instructions on importing the data.
 
-  <Frame caption="Voxel Kriging Location in Oasis Montaj">
+    Once the inversion model has been imported as a GDB file in Oasis Montaj, you can convert the 2.5D data to a 3D model by performing [3D Kriging](https://help.seequent.com/Oasismontaj/2023.1/Content/gxhelp/v/geosoft_gx_voxutils_voxelkriging.htm). The kriging functionality is located under the `Voxel` tab:
+
+    <Frame caption="Voxel Kriging Location in Oasis Montaj">
     <img src="/images/kriging.png" alt="Voxel Kriging Location in Oasis Montaj" />
-  </Frame>
+    </Frame>
 
-  The choice of kriging parameters can have a significant impact on the 3D model. It is recommended to consult with a geophysicist or geostatistician to determine the best parameters for your specific dataset. We recommend performing the kriging on the "Log10_Conductivity_mSm" column.
+    Choosing the appropriate kriging parameters is crucial for the accuracy of the 3D model. It is recommended to consult with a geophysicist or geostatistician to determine the best parameters for your specific dataset. We suggest performing kriging on the "Log10_Conductivity_mSm" column.
 
-  Ensure that the blanking distance is large enough to cover the distance between the survey lines. For example, if your survey lines are 100m apart and you are performing kriging using a cell size of 10m, ensure the blanking distance is >= 10m.
+    Ensure that the blanking distance is large enough to cover the distance between the survey lines. For example, if your survey lines are 100m apart and you are performing kriging with a cell size of 10m, make sure the blanking distance is at least 10m.
 
-  The strike, dip, and plunge parameters of the kriging should be selected based on the geological context of the survey area. It is common to set the strike angle to be perpendicular to the survey lines and the strike weight to be 2.0. This will ensure that the kriging is biased in the direction perpendicular to the survey lines.
+    The strike, dip, and plunge parameters for the kriging should be selected based on the geological context of the survey area. Typically, the strike angle is set perpendicular to the survey lines with a strike weight of 2.0 to ensure the kriging is biased in the direction perpendicular to the survey lines.
 
-  <Frame caption="Kriging Parameters">
+    <Frame caption="Kriging Parameters">
     <img src="/images/kriging_parameters2.png" alt="Kriging Parameters" />
-  </Frame>
+    </Frame>
 
-  <Warning>
-    The kriging process can be computationally intensive, especially for large datasets. Increasing the cell size and reducing the blanking distance can help speed up the process, but may result in a loss of resolution.
-  </Warning> 
+    <Warning>
+    The kriging process can be computationally intensive, especially for large datasets. Increasing the cell size and reducing the blanking distance can speed up the process, but this may result in a loss of resolution.
+    </Warning>
 
-  Make sure to consult the Oasis Montaj [3D Kriging](https://help.seequent.com/Oasismontaj/2023.1/Content/gxhelp/v/geosoft_gx_voxutils_voxelkriging.htm) documentation for more information on the kriging parameters and how to interpret the results.
+    For more detailed information on kriging parameters and how to interpret the results, please consult the Oasis Montaj [3D Kriging](https://help.seequent.com/Oasismontaj/2023.1/Content/gxhelp/v/geosoft_gx_voxutils_voxelkriging.htm) documentation.
