@@ -34,6 +34,14 @@
       "url": "25_aem"
     },
     {
+      "name": "3D AEM",
+      "url": "3_aem"
+    },
+    {
+      "name": "Configuration Files",
+      "url": "configuration"
+    },
+    {
       "name": "Coming Soon ...",
       "url": "coming_soon"
     }
@@ -58,26 +66,37 @@
       "group": "2.5D Airborne Electromagentic Inversions",
       "pages": [
         "25_aem/introduction",        
-        "25_aem/step",
-        "25_aem/structure",
-        "25_aem/data_subfolder",
         "25_aem/workflow"
+      ]
+    },
+    {
+      "group": "Common",
+      "pages": [
+        "common/step",
+        "common/structure",
+        "common/data_subfolder"
+      ]
+    },
+    {
+      "group": "3D Airborne Electromagentic Inversions",
+      "pages": [
+        "3_aem/introduction"       
       ]
     },
     {
       "group": "Coming Soon",
       "pages": [
-        "coming_soon/3d_aem",        
+        "coming_soon/requests",        
         "coming_soon/mt" 
       ]
     },
     {
       "group": "Configuration Files",
       "pages": [
-        "25_aem/configuration/system",
-        "25_aem/configuration/survey",
-        "25_aem/configuration/inversion",
-        "25_aem/configuration/discretization"
+        "configuration/system",
+        "configuration/survey",
+        "configuration/inversion",
+        "configuration/discretization"
       ]
     },
     {
