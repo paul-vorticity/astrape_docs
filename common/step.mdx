@@ -17,12 +17,12 @@ description: 'Follow our step-by-step guide to perform your first inversion with
   </Step>
 
   <Step title="Set Up Folder Structure">
-    Create a folder for the inversion, including a subfolder named 'data' for input files. See the [survey folder structure page](/25_aem/structure) and the [data subfolder page](/25_aem/data_subfolder) for more details.
+    Create a folder for the inversion, including a subfolder named 'data' for input files. See the [survey folder structure page](/common/structure) and the [data subfolder page](/common/data_subfolder) for more details.
     <Tip>Ensure all necessary files are correctly placed in the `data` subfolder to avoid issues during the inversion process.</Tip>
   </Step>
 
   <Step title="Prepare System Configuration File">
-    Prepare the system configuration file, which defines how to read the data and specifies the airborne EM system. Refer to the [system configuration page](/25_aem/configuration/system) for details.
+    Prepare the system configuration file, which defines how to read the data and specifies the airborne EM system. Refer to the [system configuration page](/configuration/system) for details.
   </Step>
 
   <Step title="Preprocessing">
@@ -34,7 +34,7 @@ description: 'Follow our step-by-step guide to perform your first inversion with
   </Step>
 
   <Step title="Modify Configuration Files">
-    Review and modify the default survey and inversion configuration files generated during preprocessing. Refer to the [survey configuration page](/25_aem/configuration/survey) and the [inversion configuration page](/25_aem/configuration/inversion) for details.
+    Review and modify the default survey and inversion configuration files generated during preprocessing. Refer to the [survey configuration page](/configuration/survey) and the [inversion configuration page](/configuration/inversion) for details.
   </Step>
 
   <Step title="Run Inversion">
@@ -43,7 +43,7 @@ description: 'Follow our step-by-step guide to perform your first inversion with
     astrape_25d run /path_to_survey_folder
     ```
     <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. </Warning>
-    Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](essentials/ray) for accessing the dashboard.
+    Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](/essentials/ray) for accessing the dashboard.
   </Step>
 
   <Step title="Postprocessing">

@@ -86,8 +86,9 @@
     {
       "group": "Coming Soon",
       "pages": [
-        "coming_soon/requests",        
-        "coming_soon/mt" 
+        "coming_soon/mt",
+        "coming_soon/requests",
+        "coming_soon/uncertainty"
       ]
     },
     {
