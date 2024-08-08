@@ -81,7 +81,7 @@
       "group": "3D Airborne Electromagentic Inversions",
       "pages": [
         "3_aem/introduction",
-        "3_aem/workflow",
+        "3_aem/3dworkflow",
         "3_aem/visual"
       ]
     },
