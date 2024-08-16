@@ -81,10 +81,16 @@
       "group": "3D Airborne Electromagentic Inversions",
       "pages": [
         "3_aem/introduction",
-        "3_aem/3dworkflow",
-        "3_aem/visual"
+        "3_aem/3dworkflow"
       ]
     },
+    {
+      "group": "Inversion Outputs",
+      "pages": [
+        "3_aem/outputs/data",
+        "3_aem/outputs/visualization"
+      ]
+    }
     {
       "group": "Coming Soon",
       "pages": [

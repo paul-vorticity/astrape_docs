@@ -1,0 +1,29 @@
+---
+title: 'Data Files'
+description: 'The data output from the inversion process includes several files containing the processed data and results'
+---
+
+The data is saved in the `deliverables` directory. The key files generated are:
+
+<Tabs>
+  <Tab title="astrape_data.csv">
+    Contains the x, y, z coordinates, line names, and conductivity values for each point in the survey.
+    - Columns:
+      - `x`: x coordinate in meters.
+      - `y`: y coordinate in meters.
+      - `z`: z coordinate in meters.
+      - `Conductivity`: Conductivity value in S/m.
+  </Tab>
+  <Tab title="astrape_extended_data.csv">
+    Extends the data with additional columns for different measurements.
+    - Columns:
+      - `x`, `y`, `z`, `Conductivity` (same as above).
+      - `Conductivity_mSm`: Conductivity in mS/m.
+      - `Log10_Conductivity_mSm`: Log base 10 of conductivity in mS/m.
+      - `Resistivity_ohm_m`: Resistivity in ohm meters.
+      - `Log10_Resistivity_ohm_m`: Log base 10 of resistivity in ohm meters.
+  </Tab>
+  <Tab title="astrape_extended_data.xyz">
+    Contains the same data as `astrape_extended_data.csv` but in Geosoft XYZ format. This file can be easily opened and viewed within the Oasis Montaj software by importing it into a Geosoft database file (GDB). Please see [this guide](https://help.seequent.com/Oasismontaj/2023.2/Content/gxhelp/i/import_gx.htm) for instructions on how to import the data.
+  </Tab>
+</Tabs>

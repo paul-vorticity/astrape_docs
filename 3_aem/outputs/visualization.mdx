@@ -10,7 +10,14 @@ The following visualization is produced during the postprocessing stage of a ful
 <iframe src="https://paul-vorticity.github.io/3d_visualization/" width="100%" height="400px"></iframe>
 
 We can see the locations of all the source-reciever pairs in the survey as the white dots. In this visualization we are showing the isosurface of conductivity at 1 Log_10(mS/m). The isosurface is a 3D surface that represents the boundary of a region where the conductivity is equal to 1 Log_10(mS/m).
+- **HTML Isosurface Plots**: Interactive HTML files displaying isosurfaces of the conductivity values.
+  - These isosurfaces, generated at varying conductivity levels, offer a 3D representation of the subsurface conductivity distribution.
+  - Each HTML file corresponds to a specific isovalue and can be viewed by simply opening it in a web browser.
+  <Warning>
+  The isosurface plots are intended for an initial overview of all the lines inverted together in one run. They are not a substitute for a detailed analysis.
+  For a comprehensive analysis, import the data into a geophysical interpretation software and perform a full kriging interpolation. Refer to the [data outputs](/25_aem/outputs/data) for more details.
+  </Warning>
+
 
 We can also see the topography of the survey area, which is represented by the colored surface. The topography is an important factor in the inversion process, as it affects the electromagnetic fields and the responses of the subsurface.
 The model provides a detailed representation of the subsurface resistivity distribution, allowing geophysicists to gain valuable insights into the geological structures and properties of the subsurface.
-
