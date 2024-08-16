@@ -30,7 +30,7 @@ icon: 'shoe-prints'
   <Step title="Preprocessing">
     Perform preprocessing, which includes system configuration validation, default configuration file generation, and data validation/preparation, with the command:
     ```
-    astrape_25d preprocess /path_to_survey_folder
+    astrape preprocess /path_to_survey_folder
     ```
     <Warning>Ensure the 'path_to_survey_folder' is correct. Incorrect paths or data can lead to errors.</Warning>
   </Step>
@@ -40,9 +40,13 @@ icon: 'shoe-prints'
   </Step>
 
   <Step title="Run Inversion">
-    Run the inversion with the command:
+    Astrape has two methods for running an inversion, 2.5D and 3D. Run a 2.5D inversion with the command:
     ```
-    astrape_25d run /path_to_survey_folder
+    astrape 2d run /path_to_survey_folder
+    ```
+    and run the inversion area in full 3D, use the following command:
+    ```
+    astrape 3d run /path_to_survey_folder
     ```
     <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. </Warning>
     Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](/essentials/ray) for accessing the dashboard.
@@ -51,9 +55,8 @@ icon: 'shoe-prints'
   <Step title="Postprocessing">
     After the inversion, perform postprocessing to generate final deliverables with the command:
     ```
-    astrape_25d postprocess /path_to_experiment_folder
+    astrape postprocess /path_to_experiment_folder
     ```
     Check the `deliverables` folder for the final results, including reports and visualizations.
-    <Check>Review the [PDF report](/25_aem/outputs/report), [data files](/25_aem/outputs/data), and [visualizations](/25_aem/outputs/visualization) in the `deliverables` folder to analyze your inversion results.</Check>
   </Step>
 </Steps>
