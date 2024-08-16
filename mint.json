@@ -85,7 +85,7 @@
       ]
     },
     {
-      "group": "Inversion Outputs",
+      "group": "3D Inversion Outputs",
       "pages": [
         "3_aem/outputs/data",
         "3_aem/outputs/visualization"
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "group": "Inversion Outputs",
+      "group": "2.5D Inversion Outputs",
       "pages": [
         "25_aem/outputs/data",
         "25_aem/outputs/report",
