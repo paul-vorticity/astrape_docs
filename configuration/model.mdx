@@ -1,0 +1,110 @@
+--- 
+title: 'Model Configuration'
+---
+
+The model configuration file specifies the initial model which you would like your inversion to start from. 
+
+<Tip>
+A default configuration file is generated during the preprocessing step. This file is a uniform halfspace. After preprocessing, you can modify the configuration file to adjust the initial model as needed.
+</Tip>
+
+
+<Accordion title="Example Model Configuration File:">
+  ```yaml config_model.yaml
+    load_model: 
+        model_path: False
+        model_scale: "log"
+
+    sigmas:
+        sigma_background: 1.0e-3
+        sigma_air: 1.0e-8
+    
+    blocks:
+        first_block:
+            cond: 0.015
+            width_x: 5
+            width_y: 5
+            width_z: 5
+            pitch: 15.0
+            roll: 5.0
+            yaw: 10.0
+            center_x: 1
+            center_y: 2
+            center_z: -3
+
+        spheres:
+        small_sphere:
+            cond: 0.02
+            center_x: 0
+            center_y: 0
+            center_z: 0
+            radius: 5
+
+  ```
+</Accordion>
+
+## Components of the Model Configuration File
+
+The load_model and sigmas are required components of the model configuration file. The blocks and spheres are optional components that allow you to define the model using blocks and spheres. 
+
+You can have as many blocks and spheres as you like in the model configuration file. The conducivity of each cell will always be the maximum of the conducivities of the blocks and spheres that cell is contained in. 
+
+In order to create a layererd model, you can define multiple blocks with large width in the x and y directions. 
+
+### Load Model
+
+<AccordionGroup>
+  <Accordion title="Model Path (model_path)">
+    The path to the model file. This should either be False or the path to the model file. Data Type: String or False.
+  </Accordion>
+  <Accordion title="Model Scale (model_scale)">
+    The scale of the model. This should be either "log" or "linear". Data Type: String.
+  </Accordion>
+
+</AccordionGroup>
+
+### Sigmas
+
+<AccordionGroup>
+  <Accordion title="Background Conductivity (sigma_background)">
+    The background conductivity of the model. The units are Siemens per meter (S/m). Data Type: Float.
+  </Accordion>
+  <Accordion title="Air Conductivity (sigma_air)">
+    The conductivity of the air. The units are Siemens per meter (S/m). Data Type: Float.
+  </Accordion>
+
+</AccordionGroup>
+
+### Blocks
+
+<AccordionGroup>
+  <Accordion title="Block">
+    The block model is defined by the following parameters:
+    * Conductivity (cond): The conductivity of the block. Data Type: Float.
+    * Width X (width_x): The width of the block in the x-direction. Data Type: Float.
+    * Width Y (width_y): The width of the block in the y-direction. Data Type: Float.
+    * Width Z (width_z): The width of the block in the z-direction. Data Type: Float.
+    * Pitch: The pitch of the block. Data Type: Float.
+    * Roll: The roll of the block. Data Type: Float.
+    * Yaw: The yaw of the block. Data Type: Float.
+    * Center X (center_x): The x-coordinate of the center of the block. Data Type: Float.
+    * Center Y (center_y): The y-coordinate of the center of the block. Data Type: Float.
+    * Center Z (center_z): The z-coordinate of the center of the block. Data Type: Float.
+  </Accordion>
+
+</AccordionGroup>
+
+### Spheres
+
+<AccordionGroup>
+  <Accordion title="Sphere">
+    The sphere model is defined by the following parameters:
+    * Conductivity (cond): The conductivity of the sphere. Data Type: Float.
+    * Center X (center_x): The x-coordinate of the center of the sphere. Data Type: Float.
+    * Center Y (center_y): The y-coordinate of the center of the sphere. Data Type: Float.
+    * Center Z (center_z): The z-coordinate of the center of the sphere. Data Type: Float.
+    * Radius: The radius of the sphere. Data Type: Float.
+  </Accordion>
+
+</AccordionGroup>
+

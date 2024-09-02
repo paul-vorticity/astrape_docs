@@ -16,16 +16,12 @@ A default configuration file is generated during the preprocessing step. This fi
     source_dx: 10
     use_topo: true    
     schedule_strategy: minimum
-    num_gpu: null
   data:
     data_eps: 2.5e-12
     data_std: 0.1
     noise_threshold: null
     inversion_tc_start: 5
     inversion_tc_end: 29
-  sigmas:
-    sigma_background: 0.001
-    sigma_air: 1.0e-08
   inversion_constants:
     optimizer: PGNCG
     optimizer_constants:
@@ -40,6 +36,8 @@ A default configuration file is generated during the preprocessing step. This fi
       alpha_s: null
       alpha_x: null
       alpha_y: null
+      alpha_z: null
+    sigma_reference: 1.0e-3
     weighting_flag: false
     weighting_constants:
       type: null
@@ -50,11 +48,6 @@ A default configuration file is generated during the preprocessing step. This fi
     upper_bound_flag: false
     upper_bound_value: null
     reg_sparse: false
-  init_model:
-    load_init_model: false
-    init_model_path: null
-    init_directory_path: null
-    init_model_scale: null
   ```
 </Accordion>
 

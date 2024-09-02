@@ -34,33 +34,39 @@ icon: 'shoe-prints'
   <Step title="Preprocessing">
     Perform preprocessing, which includes system configuration validation, default configuration file generation, and data validation/preparation, with the command:
     ```
-    astrape preprocess /path_to_survey_folder
+    python astrape/run/preprocess.py /path_to_survey_folder
     ```
     <Warning>Ensure the 'path_to_survey_folder' is correct. Incorrect paths or data can lead to errors.</Warning>
   </Step>
 
   <Step title="Modify Configuration Files">
-    Review and modify the default survey and inversion configuration files generated during preprocessing. Refer to the [survey configuration page](/configuration/survey) and the [inversion configuration page](/configuration/inversion) for details.
+    Review and modify the default configuration files. Refer to the [survey configuration page](/configuration/survey), [discretization configuration page](/configuration/discretization), [inversion configuration page](/configuration/inversion), and [model configuration page](/configuration/model) for details.
   </Step>
 
   <Step title="Run Inversion">
-    Astrape has two methods for running an inversion, 2.5D and 3D. Run a 2.5D inversion with the command:
+    Run the inversion with the following command for 3D inversions:
     ```
-    astrape 2d run /path_to_survey_folder
+    python astrape/run/three_dim.py /path_to_survey_folder
     ```
-    and run the inversion area in full 3D, use the following command:
+    or the following command for 2.5D inversions:
     ```
-    astrape 3d run /path_to_survey_folder
+    python astrape/run/two_dim.py /path_to_survey_folder
     ```
     <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. </Warning>
     Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](/essentials/ray) for accessing the dashboard.
   </Step>
 
   <Step title="Postprocessing">
-    After the inversion, perform postprocessing to generate final deliverables with the command:
+    After the inversion, perform postprocessing to generate final deliverables with the following command for 3D inversions:
     ```
-    astrape postprocess /path_to_experiment_folder
+    python astrape/run/postprocess.py /path_to_experiment_folder -d 3d
     ```
-    Check the `deliverables` folder for the final results, including reports and visualizations.
+    or the following command for 2.5D inversions:
+    ```
+    python astrape/run/postprocess.py /path_to_experiment_folder -d 2d
+    ```
+    Check the `deliverables` folder for the final results including reports and visualizations.
+    <Warning> For the postprocessing step, the path should be the path to the experiment folder, not the survey folder.</Warning> 
+    <Warning> Note that for the postprocessing step, the -d flag is required to specify the dimensionality of the inversion.</Warning>
   </Step>
 </Steps>

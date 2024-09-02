@@ -23,14 +23,25 @@ The `data` subfolder is crucial for organizing all the input files necessary for
     A CSV file that defines the waveform from the source. 
     <Info> The waveform file name, type, and column names should be provided in the config_system.yaml file.</Info>
   </Card>
-  
   <Card title="System Configuration" icon="square-4" href="/configuration/system">
     The system configuration file that outlines the setup of the survey system, including transmitter and receiver settings.
     <ul>
       <li>Required File Name: `config_system.yaml`</li>
     </ul>
   </Card>
+  <Card title="Logo Image (optional)" icon="square-8">
+    An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder and the correct path should be passed in the config_system.yaml if you would like the logo to appear on the reports. 
+    <ul>
+      <li>Example File Name: `company_logo.png`</li>
+    </ul>
+  </Card>
+</CardGroup>
 
+The following configuration files are generated automatically during the preprocessing step and do not need to be provided by the user, HOWEVER they are required for the inversion to run. 
+
+It is HIGHLY recommended that you modify these files to ensure the inversion runs smoothly. 
+
+<CardGroup cols={1}>  
   <Card title="Discretization Configuration" icon="square-5" href="/configuration/discretization">
     The discretization configuration file that specifies the spatial discretization parameters for the inversion process, such as cell size, padding, and depth range as well as the time discretization.
     <ul>
@@ -51,18 +62,12 @@ The `data` subfolder is crucial for organizing all the input files necessary for
     </ul>
     <Info> A default inversion configuration file is generated automatically during the preprocessing step. The default configuration will be based on the provided data and system parameters. It is recommended that you modify it to adjust the inversion parameters as needed.</Info>
   </Card>
-  <Card title="Logo Image (optional)" icon="square-8">
-    An optional logo image file to be used in reports and visualizations. This file should be placed in the `data` folder and the correct path should be passed in the config_system.yaml if you would like the logo to appear on the reports. 
-    <ul>
-      <li>Example File Name: `company_logo.png`</li>
-    </ul>
-  </Card>
 </CardGroup>
 
 ### Additional Notes
 
 - Ensure that all files are named clearly and follow a consistent naming convention to avoid confusion.
 - Validate the data in each file to ensure there are no missing or incorrect values that could impact the inversion process.
-- Refer to the system, survey, and inversion configuration documentation for detailed descriptions and examples of each configuration file.
+- Refer to the configuration documentation for detailed descriptions and examples of each configuration file.
 
 By organizing your `data` subfolder according to these guidelines, you will facilitate a streamlined and efficient workflow for your 2.5D inversion projects.

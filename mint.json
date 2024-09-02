@@ -58,7 +58,6 @@
       "group": "Essentials",
       "pages": [
         "essentials/hardware",
-        "essentials/ray",
         "essentials/science"
       ]
     },
@@ -74,7 +73,8 @@
       "pages": [
         "common/step",
         "common/structure",
-        "common/data_subfolder"
+        "common/data_subfolder",
+        "common/ray"
       ]
     },
     {
@@ -87,7 +87,6 @@
     {
       "group": "Coming Soon",
       "pages": [
-        "coming_soon/mt",
         "coming_soon/requests",
         "coming_soon/uncertainty"
       ]
@@ -98,7 +97,8 @@
         "configuration/system",
         "configuration/survey",
         "configuration/inversion",
-        "configuration/discretization"
+        "configuration/discretization",
+        "configuration/model"
       ]
     },
     {
