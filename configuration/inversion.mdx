@@ -2,7 +2,7 @@
 title: 'Inversion Configuration'
 ---
 
-The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment, inversion constants, initial model, and sigma values to guide the inversion process and produce accurate results.
+The inversion configuration file specifies the parameters and algorithms used to process the collected data and generate the subsurface model. It includes settings for the experiment and inversion constants to guide the inversion process and produce accurate results.
 
 <Tip>
 A default configuration file is generated during the preprocessing step. This file is based on the provided data and parameters from the system configuration file. After preprocessing, you can modify the configuration file to adjust the inversion parameters as needed.
@@ -71,13 +71,10 @@ Adjust the GPU memory in the configuration file based on your system's available
   The distance between source-receiver pairs sampled from the data, in meters. Data Type: Positive Float.
   </Accordion>  
   <Accordion title="Use Topography (use_topo)">
-  Whether to use topography in the inversion. If True, the earth is not approximated to have a flat surface at z=0. Data Type: Boolean.
+  Whether to use topography in the inversion. If False, the earth is approximated to have a flat surface at z=0. Data Type: Boolean.
   </Accordion>  
   <Accordion title="Schedule Strategy (schedule_strategy)">
   The scheduling strategy for the inversion process. Options are: "minimum" (uses the minimum number of GPUs required) or "fixed" (uses the number of GPUs specified in the num_gpu parameter). Data Type: String.
-  </Accordion> 
-  <Accordion title="Number of GPUs (num_gpu)">
-  The number of GPUs to use for the inversion when the schedule strategy is set to "fixed". Data Type: Positive Integer.
   </Accordion>  
 </AccordionGroup>
 
@@ -135,6 +132,9 @@ Adjust the GPU memory in the configuration file based on your system's available
   * alpha_x: X-direction. Data Type: Non-negative Float.
   * alpha_y: Y-direction. Data Type: Non-negative Float.
   </Accordion>
+  <Accordion title="Sigma Reference (sigma_reference)">
+  The reference model sigma value for the regularization. Data Type: Positive Float.
+  </Accordion>
   <Accordion title="Weighting Flag (weighting_flag)">
   Whether to apply depth weighting in the inversion. Data Type: Boolean.
   </Accordion>
@@ -154,33 +154,5 @@ Adjust the GPU memory in the configuration file based on your system's available
   </Accordion>
   <Accordion title="Regularization Sparse (reg_sparse)">
   Whether to apply sparse norm regularization. Data Type: Boolean.
-  </Accordion>
-</AccordionGroup>
-
-### Initial Model
-
-<AccordionGroup>
-  <Accordion title="Load Initial Model (load_init_model)">
-  Whether to load an initial model. Data Type: Boolean.
-  </Accordion>
-  <Accordion title="Initial Model Path (init_model_path)">
-  The path to the initial model file. Data Type: String.
-  </Accordion>
-  <Accordion title="Initial Directory Path (init_directory_path)">
-  The path to the directory containing initial model files. Data Type: String.
-  </Accordion>
-  <Accordion title="Initial Model Scale (init_model_scale)">
-  The scale of the initial model. Options: "linear", "log". Data Type: String.
-  </Accordion>
-</AccordionGroup>
-
-### Sigmas
-
-<AccordionGroup>
-  <Accordion title="Sigma Background (sigma_background)">
-  The background conductivity value. Data Type: Positive Float.
-  </Accordion>
-  <Accordion title="Sigma Air (sigma_air)">
-  The air conductivity value. Data Type: Positive Float.
   </Accordion>
 </AccordionGroup>
