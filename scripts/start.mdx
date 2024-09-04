@@ -2,8 +2,6 @@
 Start
 ---
 
-# Run the Inversion
-
 This script performs the inversion process for the survey data. It supports both 2D and 3D inversions, managing the data and submission through Ray.
 
 ## Usage
@@ -11,12 +9,12 @@ This script performs the inversion process for the survey data. It supports both
 To run the inversion, use the following command:
 
 ```bash
-python run_inversion.py <directory_path> <dim>
+python3 astrape/run/start.py <directory_path> <dim>
 ```
 
 ### Parameters
 
-- **directory_path**: The directory path where the survey data and inversion results are stored (default: `astrape/resources/benchmark`).
+- **directory_path**: The directory path of the survey directory.
 - **dim**: The inversion dimension (`2d` or `3d`).
 
 ### Process
@@ -24,11 +22,4 @@ python run_inversion.py <directory_path> <dim>
 - For **2D inversions**, it submits a job for each line in the survey.
 - For **3D inversions**, it processes the entire survey in one submission.
 
-## Example
-
-```bash
-python run_inversion.py /path/to/survey_data 3d
-```
-
-Running this will start the inversion process, submitting jobs to the Ray cluster for processing.
-```
+Running this will start the inversion process, submitting jobs to the Ray cluster for processing. You can view the job progress in the Ray dashboard.
