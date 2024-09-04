@@ -5,9 +5,11 @@ title: 'Survey Configuration'
 Here's a breakdown of the two approaches for defining upon which area of the survey you would like to run the inversion:
 
 - Survey Area: Specify the southwest and northeast corner coordinates to define the rectangular area for your survey.
+- Quadrilateral: Define the survey area using four points to create a quadrilateral shape.
 - Individual Lines: Define each survey line using a unique identifier and its starting and ending coordinates.
 
-When defining your survey, you can choose to specify either the individual survey lines you want to run or the area you want to invert. However, you can only provide one of these options, not both.
+When defining your survey, you can choose to specify either the individual survey lines you want to run or the area you want to invert (survey area or quadrilateral).
+However, you can only provide one of these three options, not both.
 
 <Tip> A survey configuration file is generated automatically during the preprocessing step. The default configuration will cover the entire survey area provided in the data file. However, you can modify it to adjust what area of the survey you would like to invert.</Tip>
 
@@ -35,6 +37,29 @@ When defining your survey, you can choose to specify either the individual surve
         - 708500
         - 5515000
     ```
+
+  </Tab>
+  <Tab title="Quadrilateral">
+    For defining a quadrilateral survey area, you'll need a dictionary within the configuration file. The keys in the dictionary should be named 'one', 'two', 'three', and 'four', and the values are lists containing the X and Y coordinates of the corners of the quadrilateral.
+
+    Example: 
+    ```
+    quadrilateral:
+      one:
+        - 708000
+        - 5514500
+      two:
+        - 708500
+        - 5514500
+      three:
+        - 708500
+        - 5515000
+      four:
+        - 708000
+        - 5515000
+    ```
+  </Tab>
+
 
   </Tab>
   <Tab title="Individual Lines">

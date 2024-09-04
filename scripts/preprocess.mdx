@@ -1,0 +1,32 @@
+---
+Preprocess the Data (`preprocess.mdx`)
+---
+
+# Preprocess Data
+
+This script preprocesses the survey data before performing an inversion. It ensures that the data is correctly formatted and structured to meet the survey's configuration requirements.
+
+## Usage
+
+To run the preprocessing, use the following command:
+
+```bash
+python preprocess.py <survey_dir>
+```
+
+- **survey_dir**: This is the directory containing all the survey data. It defaults to `astrape/resources/2016_southern_thomson_tdem`.
+
+## Steps Performed
+
+1. The script checks if the data matches the survey's configuration file.
+2. It ensures the data is stored in the correct format and data type for the inversion process.
+3. A new column is added to the data file containing the transformed coordinates of all lines.
+
+## Example
+
+```bash
+python preprocess.py astrape/resources/2016_southern_thomson_tdem
+```
+
+By running this, your data will be ready for inversion.
+```

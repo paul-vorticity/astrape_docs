@@ -85,6 +85,15 @@
     ]
     },
     {
+      "group": "Running Scripts",
+      "pages": [
+        "common/preprocess",
+        "common/start",
+        "common/postprocess",
+        "common/warm_start"
+      ]
+    },
+    {
       "group": "Coming Soon",
       "pages": [
         "coming_soon/requests",

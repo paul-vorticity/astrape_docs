@@ -1,0 +1,35 @@
+---
+Postprocess
+---
+
+# Postprocess Data
+
+This script processes the data after the inversion has been performed. It interpolates, filters, and prepares the inversion data for further analysis.
+
+## Usage
+
+To run the postprocessing script, use the following command:
+
+```bash
+python postprocess.py <exp_path> <dim> [options]
+```
+
+### Parameters
+
+- **exp_path**: The folder containing the inverted line data for a specific region.
+- **dim**: The inversion dimension (`2d` or `3d`).
+- **--interpolate**: Flag to interpolate the data (default: `True`).
+- **--log_level**: Set the logging level (default: `INFO`).
+- **--iter_number**: Iteration number in the inversion dataset for stitching (default: `-1`).
+- **--sigma_min / --sigma_max**: Specify the minimum and maximum sigma values for filtering.
+- **--blur**: The standard deviation for the Gaussian blur (default: `2.0`).
+- **--skip**: Number of points to skip in the line direction for isosurface plots (default: `2`).
+
+## Example
+
+```bash
+python postprocess.py /path/to/inversion_data 3d --sigma_min 0.1 --sigma_max 1.5
+```
+
+This command will process the inversion data for a 3D survey and apply sigma filtering between 0.1 and 1.5.
+```

@@ -1,0 +1,33 @@
+---
+Warm Start
+---
+
+# Warm Start Inversion
+
+This script allows users to warm start an inversion process from a previously computed setup. It loads the existing inversion data and resumes the computation from where it left off.
+
+## Usage
+
+To warm start an inversion, use the following command:
+
+```bash
+python warm_start_inversion.py <exp_path> <dim>
+```
+
+### Parameters
+
+- **exp_path**: The folder where the previous inversion data is stored.
+- **dim**: The inversion dimension (`2d` or `3d`).
+
+### Process
+
+- For **2D inversions**, it submits a job for each line in the survey, resuming from the last point.
+- For **3D inversions**, it resumes the entire survey inversion from the last computed step.
+
+## Example
+
+```bash
+python warm_start_inversion.py /path/to/previous_inversion_data 3d
+```
+
+This command starts a new inversion using the prepared objects from the previous inversion data.
