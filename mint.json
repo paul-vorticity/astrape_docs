@@ -42,6 +42,10 @@
       "url": "configuration"
     },
     {
+      "name": "Running Scripts",
+      "url": "scripts"
+    },
+    {
       "name": "Coming Soon ...",
       "url": "coming_soon"
     }
@@ -87,10 +91,10 @@
     {
       "group": "Running Scripts",
       "pages": [
-        "common/preprocess",
-        "common/start",
-        "common/postprocess",
-        "common/warm_start"
+        "scripts/preprocess",
+        "scripts/start",
+        "scripts/postprocess",
+        "scripts/warm_start"
       ]
     },
     {
