@@ -34,9 +34,10 @@ icon: 'shoe-prints'
   <Step title="Preprocessing">
     Perform preprocessing, which includes system configuration validation, default configuration file generation, and data validation/preparation, with the command:
     ```
-    python astrape/run/preprocess.py /path_to_survey_folder
+    python3 astrape/run/preprocess.py <survey_dir>
     ```
     <Warning>Ensure the 'path_to_survey_folder' is correct. Incorrect paths or data can lead to errors.</Warning>
+    Please see the [preprocessing script page](/scripts/preprocess) for more details.
   </Step>
 
   <Step title="Modify Configuration Files">
@@ -46,27 +47,27 @@ icon: 'shoe-prints'
   <Step title="Run Inversion">
     Run the inversion with the following command for 3D inversions:
     ```
-    python astrape/run/three_dim.py /path_to_survey_folder
+    python3 astrape/run/start.py <survey_dir> 3d
     ```
     or the following command for 2.5D inversions:
-    ```
-    python astrape/run/two_dim.py /path_to_survey_folder
+    ``` 
+    python astrape/run/start.py <survey_dir> 2d
     ```
     <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. </Warning>
     Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](/essentials/ray) for accessing the dashboard.
+    Please see the [start script page](/scripts/start) for more details.
   </Step>
 
   <Step title="Postprocessing">
     After the inversion, perform postprocessing to generate final deliverables with the following command for 3D inversions:
     ```
-    python astrape/run/postprocess.py /path_to_experiment_folder -d 3d
+    python astrape/run/postprocess.py <exp_path> 3d
     ```
     or the following command for 2.5D inversions:
     ```
-    python astrape/run/postprocess.py /path_to_experiment_folder -d 2d
+    python astrape/run/postprocess.py <exp_path> 2d
     ```
-    Check the `deliverables` folder for the final results including reports and visualizations.
+    Check the `deliverables` folder for the final results including reports and visualizations. Please see the [postprocessing script page](/scripts/postprocess) for more details.
     <Warning> For the postprocessing step, the path should be the path to the experiment folder, not the survey folder.</Warning> 
-    <Warning> Note that for the postprocessing step, the -d flag is required to specify the dimensionality of the inversion.</Warning>
   </Step>
 </Steps>
