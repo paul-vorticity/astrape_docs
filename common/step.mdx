@@ -11,11 +11,6 @@ icon: 'shoe-prints'
     ```
     ray start --head
     ```
-    To attach additional nodes to this cluster, run the following command on those servers:
-    ```
-    ray start --address='IP_ADDRESS:6379'
-    ```
-    <Warning>Replace 'IP_ADDRESS' with the one displayed from the output of the `ray start --head` command.</Warning>
   </Step>
 
   <Step title="Set Up Folder Structure">
@@ -51,7 +46,7 @@ icon: 'shoe-prints'
     ```
     or the following command for 2.5D inversions:
     ``` 
-    python astrape/run/start.py <survey_dir> 2d
+    python3 astrape/run/start.py <survey_dir> 2d
     ```
     <Warning>The inversion process may take significant time based on the survey lines, parameters, and hardware. </Warning>
     Monitor progress by checking the `inversion` folder for intermediate data or the `ray` dashboard. See our [Ray explainer](/essentials/ray) for accessing the dashboard.
@@ -61,11 +56,11 @@ icon: 'shoe-prints'
   <Step title="Postprocessing">
     After the inversion, perform postprocessing to generate final deliverables with the following command for 3D inversions:
     ```
-    python astrape/run/postprocess.py <exp_path> 3d
+    python3 astrape/run/postprocess.py <exp_path> 3d
     ```
     or the following command for 2.5D inversions:
     ```
-    python astrape/run/postprocess.py <exp_path> 2d
+    python3 astrape/run/postprocess.py <exp_path> 2d
     ```
     Check the `deliverables` folder for the final results including reports and visualizations. Please see the [postprocessing script page](/scripts/postprocess) for more details.
     <Warning> For the postprocessing step, the path should be the path to the experiment folder, not the survey folder. The experiment folder is created during the inversion process and is a timestamped subfolder within the `inversion` folder.</Warning>
