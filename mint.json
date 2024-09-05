@@ -93,8 +93,7 @@
       "pages": [
         "scripts/preprocess",
         "scripts/start",
-        "scripts/postprocess",
-        "scripts/warm_start"
+        "scripts/postprocess"
       ]
     },
     {
