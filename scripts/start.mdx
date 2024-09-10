@@ -2,24 +2,32 @@
 Start
 ---
 
-This script performs the inversion process for the survey data. It supports both 2D and 3D inversions, managing the data and submission through Ray.
+This script performs the inversion process for the survey data. It supports both 2D and 3D inversions, with the option to check for a warm start to potentially reuse previous inversion preparation, reducing the start up time. The process is managed through Ray's job submission system.
 
 ## Usage
 
 To run the inversion, use the following command:
 
 ```bash
-python3 astrape/run/start.py <survey_dir> <dim>
+python3 astrape/run/start.py <survey_dir> <dim> [--warm / -w]
 ```
 
 ### Parameters
 
 - **survey_dir**: The path of the survey directory.
 - **dim**: The inversion dimension (`2d` or `3d`).
+- **-w**: (Optional) Including this flag will prevent searching for a warm start. A warm start uses existing results from a previous run to avoid redundant computation, speeding up the starting of an inversion process. It is enabled by default.
 
-### Process
+### Example
 
-- For **2D inversions**, it submits a job for each line in the survey.
-- For **3D inversions**, it processes the entire survey in one submission.
+Run a 2D inversion with warm start enabled:
 
-Running this will start the inversion process, submitting jobs to the Ray cluster for processing. You can view the job progress in the Ray dashboard.
+```bash
+python3 astrape/run/start.py /path/to/survey 2d 
+```
+
+Run a 3D inversion without checking for warm start:
+
+```bash
+python3 astrape/run/start.py /path/to/survey 3d --w
+```
